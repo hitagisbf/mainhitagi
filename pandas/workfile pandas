@@ -1,0 +1,47 @@
+#This will be work file pandas that I made at work using BQNT, basically all notes that I make without my macbook 
+
+#I was thinking about some excel to dataframe uscases such as df.to_csv
+
+#Section on insepcting an Array -> given that we have some variables set for thesee arrays, the important thing
+#here will be that the len, ndim, shape basically all things following the dot value will be what we are trying to do 
+#whether that be find the length, array dimensions, elements or something else 
+
+#We call this section Inspecting the array, fo this we will also just make examples to this 
+
+d.shape
+len(d)  #length of an array 
+b.ndim #number of array dimensions 
+e.size #number of array elements 
+b.dtype #type of data type 
+b.dtype.name #name of data type
+b.astype(int) #how we can change the array to a different type 
+
+
+
+#Different Data types -> For these since there are no variables set to them just like that we will come up with examples for these
+
+
+np.int64 #signed 64 bit integer type 
+np.float32 #standard double precision float 
+np.complex #complex numbers represented by 128 floats where a complex number we know as an imaginary number added to a constant 
+np.bool #true or false values string (storing those values)
+np.object #pythons object type
+np.string #Fixed length string type 
+np.unicode #Fixed length Unicode type 
+
+#Sorting an Array
+
+a.sort() #we Sort an array this way 
+c.sort(axis=0) #sort the elements of an array's axis 
+
+#Subsetting, Slicing, and Indexing an Array 
+
+a[2] #just selects the element at the second index (index values start at 0, so an index of 2 is 0,1,2, where the 2nd index is 2)
+b[1,2] #Element at row 1 and column 2 
+
+#call those two examples subsetting 
+
+#SLicing 
+
+a[1:2] #selects item at 1 and 2 
+b[]
