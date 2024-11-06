@@ -45,3 +45,99 @@ b[1,2] #Element at row 1 and column 2
 
 a[1:2] #selects item at 1 and 2 
 b[]
+
+#This section will just be python examples with numpys 
+
+#Write a Numpy program to get the Numpy version and show the Numpy build configuration.
+
+import numpy as np 
+
+#print(np.__version__)
+
+#print(np.show_config())
+
+#Write a NumPy program to test whether none of the elements of a given array are zero. 
+
+dorian = np.array([1,2,3,5,6])
+xin = np.array([1,2,0,5,6])
+#print("Original array is:")
+#print(dorian)
+
+#print(np.all(dorian)) #this part prints out a true saying that none of them are zero
+#print(np.all(xin))
+
+#Write a NumPy program to test elements-wise for positive or negative infinity.
+
+dorian2 = np.array([1,-1, np.inf, -np.inf, 3, 6])
+positive_infinity = np.isposinf(dorian)
+negative_infinity = np.isposinf(dorian)
+
+#print(positive_infinity, negative_infinity)
+
+dorian3 = np.array([1, 1+2j, 1+3j, 4])
+print(np.iscomplex(dorian))
+
+Dorian4 = np.array([(1.3, 2.3, 4), (5, 7, 8), (9,0,9)], dtype = float)
+Dorian5 = np.zeros([3,3])
+dorian6 = np.identity(3) #identity matrix (thought I noted it )
+
+#print(Dorian5)
+#print(dorian6)
+
+#Write a NumPy program to add, subtract, multiply, divide arguments element-wise. 
+
+#When we do this arithmetic we use commas instead of the actual sign 
+#Expected Output:
+#Add:
+#5.0
+#Subtract:
+#-3.0
+#Multiply:
+#4.0
+#Divide:
+#0.25
+
+bin = np.add(1,4)
+cin = np.subtract(4,7)
+din = np.multiply(2,2)
+pin = np.divide(1,4)
+
+print(bin, cin, din, pin)
+
+#Write a NumPy program to compute logarithm of the sum of exponentiations of the inputs, sum of exponentiations of the inputs in base-2.
+#Expected Output:
+#Logarithm of the sum of exponentiations:
+#-113.876491681
+#Logarithm of the sum of exponentiations of the inputs in base-2:
+#-113.599555228
+
+stin = np.log(19)
+brin = np.log(21)
+frin = np.logaddexp(stin, brin) #logaddexp takes two arguments
+
+print(frin)
+
+#Write a NumPy program to get true division of the element-wise array inputs.
+#Expected Output:
+#Original array:
+#[0 1 2 3 4 5 6 7 8 9]
+#Division of the array inputs, element-wise:
+#[ 0. 0.33333333 0.66666667 1. 1.33333333 1.6666666
+#7 2. 2.33333333 2.66666667 3. ]
+
+Original_array = np.arange(10)  #Where are my notes on arange?
+second_array = np.array([0,3,3,3,3,3,3,3,3,3])
+Divided_array = np.true_divide(Original_array,3)
+print(Original_array)
+print(Divided_array)
+
+#rite a NumPy program to calculate the absolute value element-wise.
+#Smple output:
+#Original array:
+#  10.2 122.2 0.2]
+#Element-wise abosulate value:
+#10.2 122.2 0.2
+
+original = np.array([-1,-1,-2])
+meast = np.absolute(original)
+print(meast)
