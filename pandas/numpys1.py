@@ -26,7 +26,7 @@ zin = np.zeros((3,4)) #an array of zeros a 3 by 4 (3 rows 4 columns)
 print(zin)
 xin = np.ones((2,3,4), dtype = np.int16) #an array of ones, 2 blocks each a 3 by 4 
 #print(xin)
-yin = np.arange(10,25,5) #array of evenly spaced values (number of samples)
+yin = np.arange(10,25,5) #array of evenly spaced values (number of samples) or it makes an array of x values (if it is one value)
 #print(yin) #10, 15, 20 (based on start, stop, step method), arange not ARRANGE
 
 ain = np.linspace(0,2,5)
