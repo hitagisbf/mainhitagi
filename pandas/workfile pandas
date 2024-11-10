@@ -141,3 +141,112 @@ print(Divided_array)
 original = np.array([-1,-1,-2])
 meast = np.absolute(original)
 print(meast)
+
+#Hard Numpy promblems that may be applicable (base problems)
+
+#Write a NumPy program that creates a structured array with fields for 'name' (string), 'age' (integer), and 'height' (float). Populate it with sample data for five individuals.
+# Define the data type for the structured array
+dtype = [('name', 'U12'), ('age', 'i4'), ('height', 'f4')]
+#You may be wondering how we got to the stage of U10, etc, but basically those are the data types
+#So U -> Unsigned Integer U12 here assigns 12 value spots to that name 
+#I -> Integer
+#F -> Float 
+#s -> String 
+# Create the structured array with sample data
+structured_array = np.array([
+    ('Lehi Piero', 25, 5.5),
+    ('Albin Achan', 30, 5.8),
+    ('Zerach Hava', 35, 6.1),
+    ('Edmund Tereza', 40, 5.9),
+    ('Laura Felinus', 28, 5.7)
+], dtype=dtype)
+
+# Print the structured array
+#print("Structured Array:")
+#print(structured_array)
+
+#Write a NumPy program that accesses and prints all values of the 'Name' field from the structured array created in exercise.
+
+structured_array[0]['name'] = 30 #this will change the first index (ALbin to 30 all across the board, if we want to specify a field we use 'name' in brackets ), we change this for more than with something like [1:2]
+#print(structured_array)
+
+#Write a NumPy program that updates the 'age' field for the first individual in the structured array created in exercise 1 to 30.
+
+structured_array[0]['age'] = 30
+#print(structured_array)
+
+
+#Numpy problems 
+
+#Actual test try 
+
+#Write a NumPy program that adds a new record to the structured array created array with fields for 'name' (string), 'age' (integer), and 'height' (float) with the fields: 'name': ' Nela Suna ', 'age': 25, 'height': 5.9.
+
+#essentially add a new record to this
+
+new_structured_array = np.array([('Dorian Reece', 11, 5.3)], dtype=dtype)
+final_structured_array = np.append(structured_array, new_structured_array)
+print(final_structured_array)
+#Write a NumPy program that sorts the structured array created with fields for 'name' (string), 'age' (integer), and 'height' (float), by the 'height' field in ascending order and prints the sorted array.
+
+#Essentially sort the values in ascending order 
+
+order = np.sort(final_structured_array, order = 'height') #You can specificy the order with string values
+print('New freezer order:') 
+print(order)
+#Write a NumPy program to filter and print all records where the 'age' field is greater than 25 from the structured array created with fields for 'name' (string), 'age' (integer), and 'height' (float).
+
+#Write a NumPy program to calculate and print the average age of individuals in the structured array created with fields for 'name' (string), 'age' (integer), and 'height' (float).
+
+final = np.mean(final_structured_array['height'])
+print(final)
+
+ Define the data type for the structured array
+dtype = [('name', 'U10'), ('age', 'i4'), ('height', 'f4')]
+
+# Create the structured array with sample data
+structured_array = np.array([
+    ('Lehi Piero', 25, 5.5),
+    ('Albin Achan', 30, 5.8),
+    ('Zerach Hava', 35, 6.1),
+    ('Edmund Tereza', 40, 5.9),
+    ('Laura Felinus', 28, 5.7)
+], dtype=dtype)
+
+print("Original Structured Array:")
+print(structured_array)
+
+# Define the new record to be added
+new_record = np.array([('Nela Suna', 25, 5.9)], dtype=dtype)
+
+# Add the new record to the structured array
+# Use np.append to concatenate the new record to the existing array
+updated_array = np.append(structured_array, new_record)
+
+# Print the updated structured array
+print("\nUpdated Structured Array:")
+print(updated_array)
+
+x = np.random.random((5,3))
+
+# Displaying the first array
+
+# Generating another random array of shape (3, 2)
+y = np.random.random((3,2))
+
+# Displaying the second array
+
+# Computing the dot product of the two arrays
+z = np.dot(x, y)
+
+# Displaying the dot product of the arrays
+print("Dot product of two arrays:")
+print(z) 
+
+first = np.random.random((5,3))
+
+
+second = np.random.random((3,2))
+
+dude = np.dot(first, second) #the matrix y and x need to match (those respective values otherwise it will not be aligned )
+print(dude)
