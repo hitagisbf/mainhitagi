@@ -2,9 +2,71 @@
 #Based on this link -> https://codesolid.com/numpy-practice-questions-to-make-you-an-expert/
 
 
-import numpy as np 
+ #Using a NumPy function, how would you create a one-dimensional NumPy array of the numbers from 10 to 100, counting by 10?
 
-#Using a NumPy function, how would you create a one-dimensional NumPy array of the numbers from 10 to 100, counting by 10?
+import numpy as np 
+from string import ascii_uppercase
 
 blue = np.arange(10,110,10)
 print(blue)
+
+#How could you create the same NumPy array using a Python range and a list
+
+for i in range(20):
+    print('testing')
+
+np.array([i for i in range(10, 110, 10)])
+
+#no need to print this, but we can wrap a for loop in our array it seems without arange
+
+#What happens if you pass no arguments to the np.array()? -> we get a type error saying we need an argument 
+ 
+#How might you create a NumPy array of the capital letters, A-Z
+
+#We can either list out the different letters or do it the botttom way 
+
+np.array(chr(i) for i in range(ord('A'), ord('z'))) #This shows we can loop this again for a range between A to Z 
+np.array(list(ascii_uppercase)) #we need this ascii_uppercase since we are transferring over datatypes
+
+#How would you create a ten-element NumPy array object of all zeros
+
+#np.zeros((10))
+#np.zeros((1,10))
+
+print('bin')
+#print(bin.dtype)
+
+#Really for when we ased for the data type of the capial letters how would we find/know the data type for that problem?
+
+np.array(chr(i) for i in range(ord('A'), ord('z'))) #This shows we can loop this again for a range between A to Z 
+np.array(list(ascii_uppercase))
+
+#bin.dtype or if df = np.zeros(10) and then df.dtype
+
+#What function would return the same number of elements, but of all ones
+
+np.ones((20))
+
+#How could you create a ten-element array of random integers between 1 and 5 (inclusive)
+
+bin = np.random.randint(1,6,10) #random and then randint for generation
+print(bin)
+
+#How can you create a normal distribution of 10 numbers, centered on 5
+
+#Standard Deviation I think 
+
+bins = np.random.normal(5,1,10) #random.normal is a random number drawn from a NORMAL distrubituion 
+
+print(bins)
+nbins = np.std(bins)
+
+print(nbins)
+
+#What code would create an array of 10 random numbers between zero and one
+
+stins = np.random.rand(3,3) #random.rand makes random numbers between 0 and 1, either 
+
+print(stins)
+
+np.ones((3,5)) #does what? It makes 3 arrays each with 5 elements (ones in it)
