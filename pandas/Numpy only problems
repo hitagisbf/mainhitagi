@@ -1,2 +1,10 @@
 #This will be only Numpy problems and their relevant source code 
 #Based on this link -> https://codesolid.com/numpy-practice-questions-to-make-you-an-expert/
+
+
+import numpy as np 
+
+#Using a NumPy function, how would you create a one-dimensional NumPy array of the numbers from 10 to 100, counting by 10?
+
+blue = np.arange(10,110,10)
+print(blue)
