@@ -97,7 +97,7 @@ dorian6 = np.identity(3) #identity matrix (thought I noted it )
 #Divide:
 #0.25
 
-bin = np.add(1,4)
+bin = np.add(1,4) #this only takes two arguments for more array specific addition, you can do np.sum
 cin = np.subtract(4,7)
 din = np.multiply(2,2)
 pin = np.divide(1,4)
@@ -125,7 +125,9 @@ print(frin)
 #[ 0. 0.33333333 0.66666667 1. 1.33333333 1.6666666
 #7 2. 2.33333333 2.66666667 3. ]
 
-Original_array = np.arange(10)  #Where are my notes on arange?
+Original_array = np.arange(10)  #Where are my notes on arange
+original_next = np.arange(1,10,2) #start stop step
+print(original_next)
 second_array = np.array([0,3,3,3,3,3,3,3,3,3])
 Divided_array = np.true_divide(Original_array,3)
 print(Original_array)
@@ -176,10 +178,6 @@ structured_array[0]['age'] = 30
 #print(structured_array)
 
 
-#Numpy problems 
-
-#Actual test try 
-
 #Write a NumPy program that adds a new record to the structured array created array with fields for 'name' (string), 'age' (integer), and 'height' (float) with the fields: 'name': ' Nela Suna ', 'age': 25, 'height': 5.9.
 
 #essentially add a new record to this
@@ -192,26 +190,8 @@ print(final_structured_array)
 #Essentially sort the values in ascending order 
 
 order = np.sort(final_structured_array, order = 'height') #You can specificy the order with string values
-print('New freezer order:') 
+print('New order:') 
 print(order)
-#Write a NumPy program to filter and print all records where the 'age' field is greater than 25 from the structured array created with fields for 'name' (string), 'age' (integer), and 'height' (float).
-
-#Write a NumPy program to calculate and print the average age of individuals in the structured array created with fields for 'name' (string), 'age' (integer), and 'height' (float).
-
-final = np.mean(final_structured_array['height'])
-print(final)
-
- Define the data type for the structured array
-dtype = [('name', 'U10'), ('age', 'i4'), ('height', 'f4')]
-
-# Create the structured array with sample data
-structured_array = np.array([
-    ('Lehi Piero', 25, 5.5),
-    ('Albin Achan', 30, 5.8),
-    ('Zerach Hava', 35, 6.1),
-    ('Edmund Tereza', 40, 5.9),
-    ('Laura Felinus', 28, 5.7)
-], dtype=dtype)
 
 print("Original Structured Array:")
 print(structured_array)
@@ -245,8 +225,17 @@ print(z)
 
 first = np.random.random((5,3))
 
-
 second = np.random.random((3,2))
 
 dude = np.dot(first, second) #the matrix y and x need to match (those respective values otherwise it will not be aligned )
 print(dude)
+
+#Write a NumPy program to filter and print all records where the 'age' field is greater than 25 from the structured array created with fields for 'name' (string), 'age' (integer), and 'height' (float).
+
+new_filtered_array = structured_array['age']>25
+print(new_filtered_array)
+
+#Write a NumPy program to calculate and print the average age of individuals in the structured array created with fields for 'name' (string), 'age' (integer), and 'height' (float).
+
+averaged_structured_array = np.average(structured_array['age'])
+print(averaged_structured_array)
