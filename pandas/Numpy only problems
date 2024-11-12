@@ -70,3 +70,29 @@ stins = np.random.rand(3,3) #random.rand makes random numbers between 0 and 1, e
 print(stins)
 
 np.ones((3,5)) #does what? It makes 3 arrays each with 5 elements (ones in it)
+
+myarray = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]])
+print(myarray)
+#myarray[1,1] #the counting starts at 0, so 1 means the 2nd row, and 3 means 8 b/c 0,1,2,3 means 5,6,7,8
+myarray.ndim #counts the number of dimensions (2 brackets seem to be two dimensions)
+
+newarray = np.array([[[1,2], [3,4]], [[5,6], [7,8]]])
+print(newarray)
+newarray.ndim   #what defines the number of dimensions?
+#the number of dimensions are as follows: 
+#0d array is a single value with no dimension like np.array(5)
+#1d Array (vector) is a sequence of values in a single row like np.array([1,2,3])
+#2d Array (Matrix) A table of values with rows and columns 
+#3D array: A stack of 2D arrays (Matrix) like a cube or a list of tables 
+
+reshape_array = myarray.reshape(8,2) #remember we can make changes to our array via something.function()
+print(reshape_array)
+
+original_array = np.arange(1, 13)
+new_array = original_array.reshape(3, 4)
+print(repr(new_array))
+
+x = new_array
+x[0,0] = 42 #changes the first section of the array to 42
+print (x[0,0]) #prints the first entry 
+print(new_array[0,0]) #prints the first entry in the new array 
