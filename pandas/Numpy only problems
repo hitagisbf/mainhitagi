@@ -96,3 +96,47 @@ x = new_array
 x[0,0] = 42 #changes the first section of the array to 42
 print (x[0,0]) #prints the first entry 
 print(new_array[0,0]) #prints the first entry in the new array 
+
+z_list = [z for z in range(0,5)]
+y_list = [z_list for y in range(0,4)]
+x_list = [y_list for x in range(0,3)]
+
+x_array = np.array(x_list)
+x_array.shape #Just prints a 1D array (all these iterations are within a for loop one by one)
+
+#Indexing and Slicing Two-Dimensional Arrays
+
+# four_by_five:
+
+stinny = np.array([[ 1,  2,  3,  4,  5],
+       [ 6,  7,  8,  9, 10],
+       [11, 12, 13, 14, 15],
+       [16, 17, 18, 19, 20]])
+
+#print the first column
+print(stinny[0])
+#print the last column
+print(stinny[3])
+print(stinny[-1])
+print(stinny[2:3]) #prints the indexed second and third row
+print(stinny[2,3]) #prints second row third indexed value 
+#Print the first column (1,6,11,16)
+print(stinny[0:4,0]) #or
+print(stinny[:,0])
+print(stinny[:,3]) #prints the 3rd indexed column all the way down 
+print(stinny[:,3:])  #prints the 3rd indexed column (and the values directly next to it, and then all the way down)
+
+#Vectorized Operations
+#We use vectorized operations to perform mathematical and logical functions on an array
+one_dim = np.arange(1,6)
+print(one_dim)
+#print(one_dim*2) #random numbers in the 1 by 6 multiplied by2 
+new_one_dim = one_dim + np.arange(5, 0, -1) #arange is not random 
+old_one_dim = np.arange(5,0,-1)
+print(old_one_dim)
+print(new_one_dim)
+print(one_dim-one_dim) #obviously arrays of the same size subtracted equals 00
+print(one_dim>2) #Just a T/F Condition based on the values 
+print((one_dim > 4) | (one_dim == 1)) #Logical operators in numpy are not "AND" or "OR" instead they are represnted by | and &
+#THis basically says print T/F when one_dim is greater than 4 or equal to 1 
+print(-one_dim)
