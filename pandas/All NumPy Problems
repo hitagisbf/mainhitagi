@@ -1,0 +1,54 @@
+#Number 1: Write a Numpy program to get the Numpy version and show the Numpy build configuration.
+
+#Number 2: Write a NumPy program to test whether none of the elements of a given array are zero. 
+
+#Number 3: Write a NumPy program to test elements-wise for positive or negative infinity.
+
+#Number 4: Write a NumPy program that turns an existing matrix into an identity matrix
+
+#Number 5: Write a NumPy program to add, subtract, multiply, divide arguments element-wise. 
+
+   #Expected output: Add: 5.0, Subtract: -3.0, Multiply: #4.0 Divide: #0.25
+
+#What code would you create an array of 10 random numbers between zero and one
+
+#What could would you create to make an array of 10 random numbers 
+
+#Write a NumPy program to get true division of the element-wise array inputs.
+
+#rite a NumPy program to calculate the absolute value of an array.
+
+#Write a NumPy program that creates a structured array with fields for 'name' (string), 'age' (integer), and 'height' (float). Populate it with sample data for five individuals.
+
+#Pseudo code: 
+
+dtype = [('name', 'U12'), ('age', 'i4'), ('height', 'f4')]
+
+structured_array = np.array([
+    ('Alex Lee', 25, 5.5),
+    ('Alex Yoon', 30, 5.8),
+    ('Dorian Reece', 35, 6.1),
+    ('Kenna Khan', 40, 5.9),
+    ('Jabari Garcia', 28, 5.7)
+], dtype=dtype)
+
+#Write a NumPy program that accesses and prints all values of the 'Name' field from the structured array created in exercise. (as a bonus write a program to have this only print 'New' 5 times
+
+#Write a NumPy program that updates the 'age' field for the first individual in the structured array
+
+#Write a NumPy program that adds a new record to the structured array created array with fields for 'name' (string), 'age' (integer), and 'height' (float) with the fields: 'name': ' CJ BRIDGE ', 'age': 25, 'height': 5.9.
+
+#Write a NumPy function to create a one-dimensional NumPy array of the numbers from 10 to 100, counting by 10? (as a bonus how would I make this 2d?)
+
+#How could you create the same NumPy array using a Python range and a list
+
+#How might you create a NumPy array of the capital letters, A-Z (there is a basic package one has to import here)
+
+#More theoratical but can you explain what defines the number of dimensions in an array, with that idea please make a 1d array, a 2d array, and a 3d array 
+#For the above problem note the product of dimensions in the reshape call must equal the total number of elements in the original array.
+
+
+
+
+
+
