@@ -2,13 +2,17 @@
 #Based on this link -> https://codesolid.com/numpy-practice-questions-to-make-you-an-expert/
 
 
- #Using a NumPy function, how would you create a one-dimensional NumPy array of the numbers from 10 to 100, counting by 10?
+ #Using a NumPy function, how would you create a one-dimensional NumPy array of the numbers from 10 to 100, counting by 10? (as a bonus how would I make this 2d?)
 
 import numpy as np 
 from string import ascii_uppercase
 
 blue = np.arange(10,110,10)
 print(blue)
+
+#we reshape this by using np.reshape
+
+blue_new_shape = blue.reshape(2,5)
 
 #How could you create the same NumPy array using a Python range and a list
 
