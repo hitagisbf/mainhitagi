@@ -2,11 +2,11 @@
 
 #I was thinking about some excel to dataframe uscases such as df.to_csv
 
-#Section on insepcting an Array -> given that we have some variables set for thesee arrays, the important thing
-#here will be that the len, ndim, shape basically all things following the dot value will be what we are trying to do 
+#Section on insepcting an Array -> given that we have some variables set for thesee arrays, the important thing here will be that the len, ndim, shape basically all things following the website will be what we are trying to do 
 #whether that be find the length, array dimensions, elements or something else 
 
-#We call this section Inspecting the array, fo this we will also just make examples to this 
+
+#Basics on Inspecting the array (examples to come)
 
 d.shape
 len(d)  #length of an array 
@@ -17,11 +17,10 @@ b.dtype.name #name of data type
 b.astype(int) #how we can change the array to a different type 
 
 
-
 #Different Data types -> For these since there are no variables set to them just like that we will come up with examples for these
 
 
-np.int64 #signed 64 bit integer type 
+np.int64 #signed 64 bit integer type (64 bits wide)
 np.float32 #standard double precision float 
 np.complex #complex numbers represented by 128 floats where a complex number we know as an imaginary number added to a constant 
 np.bool #true or false values string (storing those values)
@@ -31,24 +30,20 @@ np.unicode #Fixed length Unicode type
 
 #Sorting an Array
 
-a.sort() #we Sort an array this way 
+a.sort() #One of the ways we sort an array 
 c.sort(axis=0) #sort the elements of an array's axis 
 
-#Subsetting, Slicing, and Indexing an Array 
+#Subsetting
 
 a[2] #just selects the element at the second index (index values start at 0, so an index of 2 is 0,1,2, where the 2nd index is 2)
 b[1,2] #Element at row 1 and column 2 
 
-#call those two examples subsetting 
-
-#SLicing 
+#Slicing 
 
 a[1:2] #selects item at 1 and 2 
 b[]
 
-#This section will just be python examples with numpys 
-
-#Write a Numpy program to get the Numpy version and show the Numpy build configuration.
+#Example 1: Write a Numpy program to get the Numpy version and show the Numpy build configuration.
 
 import numpy as np 
 
@@ -63,7 +58,7 @@ xin = np.array([1,2,0,5,6])
 #print("Original array is:")
 #print(dorian)
 
-#print(np.all(dorian)) #this part prints out a true saying that none of them are zero
+#print(np.all(dorian)) #prints a true (if none are zero, if at least one is zero prints a false)
 #print(np.all(xin))
 
 #Write a NumPy program to test elements-wise for positive or negative infinity.
@@ -125,7 +120,7 @@ print(frin)
 #[ 0. 0.33333333 0.66666667 1. 1.33333333 1.6666666
 #7 2. 2.33333333 2.66666667 3. ]
 
-Original_array = np.arange(10)  #Where are my notes on arange
+Original_array = np.arange(10)  #Arange is just literally A range (of numbers up to a number (not including the specified end number)
 original_next = np.arange(1,10,2) #start stop step
 print(original_next)
 second_array = np.array([0,3,3,3,3,3,3,3,3,3])
@@ -167,7 +162,14 @@ structured_array = np.array([
 #print("Structured Array:")
 #print(structured_array)
 
+
+
 #Write a NumPy program that accesses and prints all values of the 'Name' field from the structured array created in exercise.
+
+for name in structured_array['name']:
+    print(name)
+
+#we use a for loop to iterate over the names and then only print the names 
 
 structured_array[0]['name'] = 30 #this will change the first index (ALbin to 30 all across the board, if we want to specify a field we use 'name' in brackets ), we change this for more than with something like [1:2]
 #print(structured_array)
@@ -234,6 +236,10 @@ print(dude)
 
 new_filtered_array = structured_array['age']>25
 print(new_filtered_array)
+
+#Difference between random and randint -> random.rand makes a series of floating numbers (0 to 1) while random.randint is a series of integers within a specified range
+#Random.rand is like np.random.rand(2,3) -> a 2 by 3 with 0 to 1 values and random.randint is like np.random.randint(10,20) -> the randomness does not exceed 20 (low,high) where high is not included
+#random.randint also has an optionali size parameter -> random.randint(10,20, size = 30) for example
 
 #Write a NumPy program to calculate and print the average age of individuals in the structured array created with fields for 'name' (string), 'age' (integer), and 'height' (float).
 
