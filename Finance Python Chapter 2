@@ -1,0 +1,193 @@
+import pandas as pd
+import numpy as np 
+
+pd.set_option('display.notebook_repr_html', False)
+pd.set_option('display.max_columns',8)
+pd.set_option('display.max_rows',8)
+
+#We can make a series ny passing a scalr value, a python list, a numpy array to the constructor
+#See this example that makes a series from 100 normally distributed random numbers
+
+np.random.seed(1)
+s = pd.Series(np.random.randn(100)) #here we see the use of random randn (a variation of randint)
+#print(s)
+
+#print(s[2]) #we retrieve a specific entry via indexing 
+#print(s[2:5]) #to print the indexed values (equal to 2 but less than 5)
+#print(s[[2,6,10]]) #to print the specifc values (double bracket)
+
+#1 2 3 -> indexed version [0,1,2] (size 3)
+
+print(s.head()) #head prints the first 5 
+print(s.tail()) #Tail prints the last 5
+
+#Creating a Series
+
+#Each series has an index and a sequence of values which we retrieve using .index
+
+#s.index:here will retrieve 0-99 (size 100, 100 things as first denoted)
+#By that same idea we can also retrieve the values using s.values
+
+#print(s.index)
+#print(s.values)
+
+dorian = pd.Series([1,2,3,4], index = ['a','b','c','d'])
+print(dorian.index)
+
+print(len(dorian)) #len shows the number of elements in a series 
+#Series are one dimensional which we can find out by using .shape or .ndim
+print(dorian.ndim) #dimensions
+print(dorian.shape) #a tuple containing the dimensionality so (4,) means a 1 dimensional array with 4 values
+
+#Count counts the number of rows in a SERIES that have a value
+#Values can repeat sometimes so we use .unique() to provide occurences of one 
+
+#Adding Series differs from adding Arrays, we will examine more come tomorrow or tonight
+ 
+
+s3 = pd.Series([1, 2, 3, 4], index=['a', 'b', 'c', 'd'])
+s4 = pd.Series([4, 3, 2, 1], index=['d', 'c', 'b', 'a'])
+
+print(s3+s4)
+#so if this was an np.array of the same size being added it would add them straightup
+#The series adds things based on where they are indexically (not a real word)
+#a = 1 and 1 so thats 2, b = 2 and 2 so thats 4 and so on and so forth (we see this based on the index labels)
+
+#Creating a DataFrame
+
+test = pd.DataFrame(np.array([[10,11], [20,21]]))
+
+print(test)
+
+#Either we can do that or pass a bunch of series into a dataframe
+
+test1 = pd.DataFrame([pd.Series(np.arange(10,15)), pd.Series(np.arange(3,6))])
+
+print(test1)
+
+#You can also make columns with data frames with the columns parameter, right in the array paranthesis
+
+test2 = pd.DataFrame(np.array([[10,11],[9,12]]),columns = ['test','sest'])
+
+print(test2)
+
+test2.columns #shows the columns in the dataframe
+
+#We know we can make dataframes with series but we can also link those series to column names in the dataframe like the below example
+
+d1 = pd.Series(np.arange(1,5,1))
+d2 = pd.Series(np.arange(1,10,2))
+
+d3 = pd.DataFrame({'T1':d1,'T2':d2})
+
+#print(d3) #here we see T1 and T2 tied directly to the two series 
+
+spx = pd.read_csv("sp500.csv", index_col = 'Symbol',usecols =[0,2,3,7])
+#print(spx.head())
+print(spx.columns)
+#print(spx)
+
+#How can we select columns in a dataframe?
+
+#We use the .iloc[] operator 
+#.iloc is powerful because it allows us to do integer based location to select rows and columns from a datafram
+#based on their position rather than their label (as we were doing with numbers down below)
+
+#print(spx.iloc[[0,2,1],[1,2]])
+print(spx.iloc[:3,1:3]) #remember that when doing : it does not include the last value
+
+#but this was a powerful example to use iloc based on column integer labels
+#Iloc is for Integers while Loc is for Strings and to get the same data we would do 
+
+#print(spx.loc[['MMM','ABBV'],['Price','Book Value']])
+print(spx.loc[:'ABBV','Price':'Book Value'])
+
+#this is an important point when slicing with text versus integers
+#Slicing with text includes that value, slicing with integers does NOT include the last specified slicing point
+
+#pick back up on page 52 of Mastering Finance 
+
+#In addition to iloc and loc there is ix which takes both integers and string values 
+#However, we won't really use this but just note its existence (won't work in VSC for me but just noting)
+
+#Obviously we know about Booleans (True or False) and we can also apply the same thinking to large data sets
+
+print(spx.Price < 100) #where we take a column and see if it is less than a 100 via a simple test
+
+print(spx[spx.Price > 100]) #here we take the spx and we only print values where the price is greater than a 100
+
+#Obviously with Booleans we can chain conditions with & and not &, or "or's" for example
+
+script = (spx[(spx.Price > 50) & (spx.Price < 100)]) [['Price']]
+
+print(script)
+
+#In the future no need to have a print statement around these conditionals, just make a variable for it and directly print that since we cant print the script itself
+#Essentially takes price less than and greater than 50 and only prints those
+
+np.random.seed(123456) #random seed makes random numbers yes but uses the SAME random numbers everytime, which makes it good for error testing and the like
+
+FBoss = pd.DataFrame(np.random.randn(5,4), columns = ['A0','A1','A2','A3'])
+
+#When we apply arithmetic to this dataframe it keeps the original data THE SAME as we saw with two print statements of the FBoss variable (one multipled by two)
+
+#print(FBoss - FBoss.iloc[0])
+#print(FBoss)
+#print(FBoss.iloc[0])
+
+#So in dataframe substraction Python will align the series along the dataframe columns which is how the subtraction works: Row Wise Broadcast
+#So it takes A0(0)-A0(0th index), then goes down and takes A0(1)-A0(0) and then A0(2)-A0(0), doing the same thing down the whole A0 column and then apply the same to the other columns
+
+#We can also specify an axis via axis = 0 and even subtract all columns from the rest in one go 
+
+a_col = FBoss['A0']
+print(FBoss.sub(a_col,axis=0))
+
+#Which we see subtracts A0 by itself all the way down and then A1-A0 (for every row entry)
+
+
+#Re Indexing Portion
+#Re indexing is important to fill certain data where there is none or as a simple re ordering (reindex fills NAN should there be a new entry)
+
+np.random.seed(1)
+Tata = pd.Series(np.random.randn(5))
+
+#now assign the index to this 
+
+Tata.index = ['FI','SE','TH','FO','Fr']
+
+#Now reassign the index values (add more than 5)
+
+Tata2 = Tata.reindex(['FI','TH','GE','NO'])
+Tata2['FI'] = 0
+print(Tata2)
+print(Tata['FI']) #this works because we said operations keep the original data the same
+
+#Most times we want to reindex because our intial dataframes can't be manipulated together for some odd reason
+#Think if you have sequential integers in one dataframe and then sequential STRING integers in another, it would be hard to add them together for example so we should probably reindex
+
+Dav = pd.Series([0,1,2], index = [0,1,2])
+Cen = pd.Series([3,4,5], index = ['0','1','2'])
+
+print(Dav + Cen) #We see results in errors because python tries to match the series but fails
+
+Cen2 = Cen.reindex([0,1,2])
+print(Dav + Cen2)
+
+#This still does not work because Cen is still expecting string not integers so you need to change the type to an integer
+
+Cen.index = Cen.index.astype(int)
+Cen2 = Cen.reindex([0,1,2])
+print(Dav+ Cen2)
+
+#Like fill = prev in excel we can also do something like fill = 0 in python
+
+Cen2 = Cen.copy()
+Cen3 = Cen2.reindex(['Test','Dest'],fill_value=0)
+
+print(Cen3)
+
+#Chapter covered, indexing, reindxing, iloc, loc, naming and renaming columns, manipulating series and dataframes, using head and tail and basic other stuff
+#Review this code block before going on to Chapter 3 
+
+#Testing script
