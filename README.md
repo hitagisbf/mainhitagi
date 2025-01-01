@@ -2,4 +2,5 @@ Basic Python Code for Introductory purposes to coding, will go over the basics a
 
 Teaching Resource -> https://runestone.academy/ns/books/published/thinkcspy/index.html
 Teaching Resource -> https://www.amazon.com/Mastering-Pandas-Finance-Michael-Heydt/dp/1783985100
-
+Teaching Resource -> https://github.com/chongjason914/pandas-tutorial
+Resource -? https://www.kaggle.com/
