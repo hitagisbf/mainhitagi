@@ -1,0 +1,21 @@
+print('hello')
+
+#I will keep this file to update with a new file of pandas zero to hero 
+
+import numpy as np
+import pandas as pd 
+
+
+
+frame = pd.read_csv('screentime_analysis.csv')
+
+print(frame.head()) #head is first 5 rows of the data frame while tail is the last 5
+
+print(frame.shape) #shape tells us the number of rows and columns in a data frame
+print(frame.index) #index tells us the range of the index (numpy)
+
+df = pd.DataFrame({'Name': ['Alice', 'Bob', 'Aritra'],'Age': [25, 30, 35],'Location': ['Seattle', 'New York', 'Kona']},index=([10, 20, 30]))
+print(df.index) #index tells us the rows or columns in a data frame (and it uses labels to do so)
+
+#So first thing is first is two different .index. The numpy one uses numbers, while pandas uses labels
+#The index is pandas stores metadata (such as the data type which is how we know which one we are dealing with)
