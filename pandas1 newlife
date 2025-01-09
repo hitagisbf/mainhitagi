@@ -19,3 +19,48 @@ print(df.index) #index tells us the rows or columns in a data frame (and it uses
 
 #So first thing is first is two different .index. The numpy one uses numbers, while pandas uses labels
 #The index is pandas stores metadata (such as the data type which is how we know which one we are dealing with)
+
+#one can make their own data frame via .df 
+
+test_scores = pd.DataFrame({'Student_ID': [154, 973, 645], 'Science': [50, 75, 31], 'Geography': [88, 100, 66],'Math': [72, 86, 94]})
+
+#where we wrao the whoke thing in a parens and a curly bracket
+#if we print this we can see how our data frames are indexed
+
+print(test_scores.columns)  #we can see the index via .index or .columns 
+
+test_scores = test_scores.set_index('Student_ID') #We can use a set index to essentially rename the name of our index 
+
+print(test_scores)
+
+#We can also rename column names with .rename -> and then the columns 
+
+test_scores.rename(columns={'Science':'Virgil'},inplace=True) #where we inplace to make the change permanent
+#and we do : to rename the column
+
+#I am also aware of the drop function, where we can drop columns or rows (where if we renamed an index column we could then drop that too)
+
+test_scores.drop(columns=['Virgil'],inplace=True) #or we can drop the rows with the same kind of argument essentially
+
+#We can also add columns with the same thinking but we have to note that if we do this the column and rows that come with it have to be of the same size 
+
+#That Comes in the way of calling the dataframe and the new column you wish to make and then assigning values 
+
+test_scores['Surf'] = [500,400,300]
+
+#everything up to this point has been a dataframe
+
+#Pandas is good for two things, one is dataframes the other is series 
+
+#A series is one dimensional and a dataframe is two dimensional 
+#Series:  Is like a list, but it has the index labels that we would normally see (so think n,)
+#Dataframe: is a dictionary but it has index labels where each column is a series 
+
+Surf = pd.Series(['roll','uzi'], index = [100,200])
+
+#This is a series, which once we make a dataframe we will see it is just series added on top of each other 
+
+Ecstacy = pd.DataFrame([[500,'pure','test'], [600, 'fure','rest'], [700, 'sure','best']],columns=['Young','coke','crack'])
+
+print(Surf)
+print(Ecstacy)
