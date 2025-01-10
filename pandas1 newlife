@@ -64,3 +64,67 @@ Ecstacy = pd.DataFrame([[500,'pure','test'], [600, 'fure','rest'], [700, 'sure',
 
 print(Surf)
 print(Ecstacy)
+
+#Loc vs Iloc
+
+#Loc is label based (so think text) while Iloc is posiiton based (so think numbers)
+#Loc and Iloc are specific to pandas, and meant to navigate dataframes/series it is not meant for dictionaires or lists because those are not native to the library
+
+#If we want to slice a normal list or dictionary that we made in python we would slide them as we normally one using any combination of start/stop/step
+
+#loc and iloc only in pandas
+sheet_spread = pd.read_csv('global_tech_salary.txt')
+#print(sheet_spread.head())
+
+#in a dataframe we can select a column either by doing the name of the dataframe followed by ['text']
+
+#The idea is to do ['text'] or .text
+
+print(sheet_spread['company_location'])
+print(sheet_spread.company_location)
+
+#both do the same thing but [] is more robust and can handle more cases
+
+#Onto loc and iloc 
+#Iloc (position or integer based location) takes two arguments, the first being the row and the second being the column
+
+sheet_spread.iloc[0, :] #this is first row (since its indexed at 0) and all columns 
+sheet_spread.iloc[0,0] #first row, first column
+sheet_spread.iloc[[0,2], :] #first and third row, and then all columns 
+sheet_spread.iloc[-1,0] #last row, first column
+sheet_spread.iloc[0:2, 1:3] #first and second row, second and third column 
+
+#These are most example of iloc but one you get stuck just remember rows to columns with paranthesis separating the two and : to either pull all of something or to extend
+
+#Loc 
+#loc is the same thing (rows and columns), but label based so if we knew the names of our label we could use that instead of the numeric 
+
+#so good idea to list out the columns to get an idea of the names to pull for
+
+print(sheet_spread.columns)
+
+sheet_spread.loc[0, 'work_year'] #first row of the work year column
+sheet_spread.loc[1:3, 'work_year','employment_type', 'job_title'] #first to third row of the respective columns 
+
+#Important to note that when slicing in loc vs iloc, loc will include the start and end values, while iloc will not include the last sliced value
+
+#Not only can we do this we can also do condition based formatting, think along the lines of a matches formula in excel for example 
+
+print(sheet_spread.loc[sheet_spread['company_location'] == 'AU', 'company_name']) #This here returns all the line items with that classification
+
+#We can do multiple conditionals with the & symbol so taking this once again
+
+#print(sheet_spread.loc[(sheet_spread['company_location'] == 'AU') & (sheet_spread['work_year'] == 2023), 1])
+#the above code returns company names in AU and with a work year of 2023
+
+#The or operator is | and the not operator is ~
+#Chaining the or operation is an idea of IN ==, but here we use the  .isin() function
+
+sheet_spread.loc[sheet_spread['company_size'].isin(['small','medium']), 'company_name']
+
+#We also have the .isnull and .notnull functions to check for missing values which we would do in the same breath
+
+sheet_spread.loc[sheet_spread['employee_residence'].isnull(), :]
+
+#For this code specifically there are too many indexers so we can either keep playing with isnull or just fix the names 
+#either way the idea is the same on what/how to use these functions 
