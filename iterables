@@ -63,4 +63,150 @@ print([1, 2, ["hello", "goodbye"]] * 2) #prints 1,2 hello goodbye and then does 
 
 print(id(ass))
 
-#pick up on list slicing 
+#We know about slicing via pandas but let us formally go over it here
+#List slicing: we start at the index and then end right before one 
+
+a_list = ['a', 'b', 'c', 'd', 'e', 'f']
+print(a_list[1:3]) #we start at index 1 and end at 2 not 3 so this is 'b' and 'c'
+print(a_list[:])  #prints everything out in the last
+
+#strings are immutable, meaning we cannot change it directly, while lists are mutable meaning we can change it directly via accessing it 
+
+#example
+
+NFL = ["Steelers", "good", "football", "team"]
+NFL[1] = "bad"
+print(NFL) #as we can see here we changed an element in our list by accessing it directly
+
+#This is basically called item assignment
+
+NFL[1:4] = ["bad","bad","football","team"] 
+print(NFL) #this is good bc not only did we change multiple things at once we also added another item to the existing list
+
+#If we want to remove elements from a list we can add the empty list to them via 
+
+blist = ['a', 'b', 'c', 'd', 'e', 'f']
+blist[1:3] = []
+print(blist) #which will remove the indexed values 1-2
+
+#knowing that lists are mutable we can also delete elements from a list via del 
+
+SB = ["steelers", "win", "super bowl"]
+#del SB[0]
+print(SB) #which we see has removed the first element
+del SB[0:2] #which will delete up to the 2nd index (non including) it only deletes the 2nd index after the fact bc we changed it 
+
+print(SB)
+
+team = "steelers"
+Lteam = "steelers"
+
+#for these two variables do they point to the same string?
+print(team is Lteam) #it is true they both point to the same string
+
+#But note this is for STRINGS. Because they are immutable python can speed up the process and make two variables that refer to the same thing be the same
+
+Wteam = ["george", "pickens", 14]
+Ahteam = ["george", "pickens", 14]
+
+print(Wteam is Ahteam) #this is false 
+print(Wteam == Ahteam) #but this is true (why)?
+
+#That is because "is" is checking the objects identity (identity)
+
+#Ahteam and Wteam are stored in different memory locations hence it is false 
+
+# this "=="" is checking if two variables have the same value (equality)
+
+#Aliasing: Since we asserted the difference between is and == we can also touch on something like
+
+Steelers = ["never","good"]
+Losers = Steelers
+print(Losers) #will now print the steelers object because we assigned one variable to another
+
+#the list [] has two different names so we are now saying it is aliased
+#now if we do print(losers is Steelers) this will be true 
+#so just remmeber == and is (and also not is and !=)
+
+Real_losers = Steelers[:] #makes a clone of the steelers list so we can use this one now instead
+#Obviously these two have different object identities as well but the same values
+
+#We talked about repition before with the * operand but let us dive a bit deeper into this 
+
+#when we make a copy of the original list, that list does not get changed so see down below
+
+clist = [4, 2, 8, 6, 5]
+dlist = clist * 2
+dlist[3] = 999
+print(clist) #dlist was the new assignment variable but clist itself was never changed, only blist
+#and as we can see clist is the same elements in it that was before
+
+elist = [4, 2, 8, 6, 5]
+flist = [elist] * 2
+elist[3] = 999
+print(flist) #another example where here flist is changed to elist and then we change elist 3 to 999 but that DOES NOT MATTER
+#the flist will be two sublists b/c thats what it was assigned to first and it never changed again
+#if we put elist[3] = 999 first then that would have affected flist but it does not so we are ok 
+
+#Moving on to append and insert
+
+#append allows us to literally add an element to a list, while insert does the same but we can specify it at a position and then shift the others up
+
+WWSW = []
+WWSW.append(10)
+WWSW.append("never")
+WWSW.append("super bowl")
+print(WWSW)
+
+WWSW.insert(1,"sad")
+print(WWSW)
+
+#reverse, sort, index, count and pop 
+
+WWSW.append(12)
+WWSW.append(16)
+WWSW.append(3)
+WWSW.append(1)
+WWSW.insert(2,10)
+print(WWSW.reverse) #reverses the order its in 
+print(WWSW.sort) #sorts it in order
+print(WWSW.index(3)) #not to be confused with pandas index but this just finds the index of the specified x in a list 
+print(WWSW.count(10)) #counts the number of occurences of 10 here for example
+
+NWSWW = WWSW.pop() #pop removes and returns the last item in the list (when no params are specified)
+#when we have a parameter inside pop it is referring to the index so like .pop(2) removes the second index value 
+print(NWSWW) #this prints the last item since its not the WSWW list but just the popped element
+print(WWSW) #this pop changed is applied directly onto the original WWSW (bc we changed it) #this will print the whole new list now 
+
+#more on pop..
+
+xlist = [4, 2, 8, 6, 5]
+temp = xlist.pop(2) #makes a copy of xlist BUT it pops the 2nd and then the 0th index so it is a copy but with these things 
+temp = xlist.pop()
+print(xlist) #this returns the whole list without the popped elements BECAUSE OF VARIABLE ASSIGNMENT 
+
+
+#is different than 
+
+ylist = [4, 2, 8, 6, 5]
+ylist = ylist.pop(0)
+print(ylist) #this returns just the value that was popped because no copies were made 
+
+#Append vs Concatenate
+#we can add an item to the end of a list via append and with concat however we must be careful 
+
+twotimes = []
+twotimes.append(1)
+twotimes.append(2)
+
+#so 1, 2 was appended to the empty list 
+#however we cannot do twotimes + 99, that will be an error
+#instead we do 
+#so remember concatenate will need a list to do so while append does not 
+
+twotimes = twotimes + [99] #or
+print(twotimes)
+twotimes = twotimes + ['string']
+print(twotimes)
+
+#pick up at 10.17 (10 more chapters to go )
