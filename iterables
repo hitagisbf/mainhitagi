@@ -1,0 +1,66 @@
+s = "test"
+print(s)
+
+#I guess I can make this iterables since those are integral 
+
+#A list is an order of data values, each defined by an index, where the values in a list are called ELEMENTS
+
+#empty list: [] so nothing inside the list
+#sublist: [[]] so a list inside a list 
+#regular list [] empty lists inside a list or a sublist
+
+[10, 20, 30, 40]
+["spam", "bungee", "swallow"]
+
+#list's dont have to contain the same data type like down below
+
+["hello", 2.0, 5, [10, 20]]
+
+test = ["we some ahh"]
+test2 = [1,2,4,5]
+test3 = [test2,test]
+print(test3)
+
+#what is the len (length) of each list?
+#The length of each list is defined by each singular data type 
+
+drago = ['why','do','we','suck',2017,2018,2019,2020,2021,2022,2023,2024]
+
+print(len(drago)) #as we see outputs 12 because we have 12 items 
+
+#a list inside of a list is still counted as one data item 
+
+draco = ['ok', ['so', 'we', 'ahh']] #we need a comma in between these two
+
+#is two 
+
+#How do we access the elements in our list though?
+#We use the [] next to the name of the variable for example 
+
+print(draco[0])
+#what if we wanted to get the 'o'?
+
+#the good thing about accessing elements is that we can use multiple [] as python reads this left to right
+
+print(draco[0][0])
+
+#IN and NOT IN are both booleans that will return such value if criteria is met 
+
+ass = ["pittsburgh", "steelers", "mike","tomlin"]
+
+print("good" in ass)
+print("steelers" in ass)
+print("good team" not in ass)
+#so as we can see good is not in that variable so it is false but the steelers are ass so it is true and then a good team is not in ass so that too is true 
+
+#We can concatenate lists with +, or concatenate string to a list with +
+#Note that concatenating lists makes a new list, not a sublist and if you repeat items with * you get a new list with the amount of items you repeat by
+
+# * is repetition, as we alluded to before so something like the below 
+print([1, 2, ["hello", "goodbye"]] * 2) #prints 1,2 hello goodbye and then does it again making a whole new list
+
+#In python every object has a unique identifier which you can call upon via id on the data you are interested in looking at 
+
+print(id(ass))
+
+#pick up on list slicing 
