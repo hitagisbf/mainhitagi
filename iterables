@@ -209,4 +209,121 @@ print(twotimes)
 twotimes = twotimes + ['string']
 print(twotimes)
 
-#pick up at 10.17 (10 more chapters to go )
+#lists and for loops
+
+Mikelomlin = ["still", "on", "that", "bs"]
+
+for likelomlin in Mikelomlin:     #very simple idea but establish your variable then make a variable to loop it against
+    print(likelomlin)
+
+fruits = ["apple", "orange", "banana", "cherry"]
+
+for position in range(len(fruits)):     #we can apply that here as well
+    print(fruits[position])
+
+print(len(fruits)) #the reason the above prints 4 times is because the length is 4
+#essentially saying for i in range(4): idea
+#the idea is that we can iterate through the upper bound of the limit now no matter what, without even knowing since we are pulling the length of the list
+
+#this idea can be extended to if statements and more importantly sequence ideas
+
+for i in range(22):
+    if i % 3 == 0:
+        print(i)
+
+#lists are mutable meaning we can change them as we go which is important because we can have a starting list and then change it via looping
+
+L = [2,10,12,99,360]
+
+for i in range(len(L)):
+    L[i] = L[i] **2 #this part was important because it is changing the list, L (the list and then [i] the iteration)
+
+print(L)
+
+#So remember lists are mutable so change then with a list as you go on
+
+alist = [4, 2, 8, 6, 5]
+blist = [ ]
+for item in alist:
+    blist.append(str(item)+'text')
+print(blist)
+
+#this is very important as to what item is and to what for x in y: really means
+#item here is the loop variable that takes on the value in alist every time we loop through it
+#so here item is always a number(until we change it to a string)
+#but basically if we didn't have str(item) we wouldnt be able to add them because we cant add numbers and text together
+
+#So just remeber the following
+#x is just a variable name, so you can call it anything (e.g., item, element, number).
+#Its role is to temporarily hold each element of y as the loop runs.
+
+#Accumulator patterns with lists
+
+#start
+sum = 0 #accumulator variable: basically what we want to keep applying things to 
+for num in [1, 3, 5, 7, 9]: #num is our loop variable in our list
+    sum = sum + num #the loop runs through each number in the list and adds on to sum, for each of those numbers
+print(sum)
+
+#the accumulator variable is always the start and meant to be added on 
+
+long_names = 0
+for name in ["Joe", "Sally", "Amy", "Brad"]:
+    if len(name) > 3:
+        long_names += 1
+print(long_names)
+
+#so here our accumulator is long name and then we iterate through the list with a condition
+#the condition being the length of a name (looping through each one at a time)
+#then it updates long_name +1 for each loop that passes that criteria
+
+s = "what if we went to the zoo"
+num_vowels = 0
+for i in s:
+    if i in ['a', 'e', 'i', 'o', 'u']:
+        num_vowels += 1 #incrementor here
+print(num_vowels)
+
+#good example where num_vowls is the accuumulator variable and we loop i through s under the condition that if i contains any of those variables
+#we increment by 1
+
+nums = [9, 3, 8, 11, 5, 29, 2]
+best_num = 0
+for n in nums:
+    if n > best_num:
+        best_num = n
+print(best_num) #example to find the max of a data set, #how can I get the min (float('inf'))?
+
+
+#this is an interesting one, where we define two things and then we loop through nums 
+#and if n (nums) is greater than best_num then we print that value essentially
+#so this starts the loop at 9 > 0, and keeps looping through until we finish at 2 
+#meaning the end value is 29
+
+#IMPORTANT -> #while we can get the min with float(inf) we can just do best_num = num[0]
+#this way we use the index of the set and then do n < best_num to have it iterate
+#so use the index not an actual value 
+
+scores = [85, 95, 70]
+result = ''
+for score in scores:
+   result = result + str(score) + ','
+
+print("The scores are " + result) #this is always one line not multiple 
+
+#this is similar to our sum + num idea where we loop through scores and then 
+#convert that to string so we can do the adding of '' and of '
+#to then loop through them all in one line
+
+#challeng problem: Challenge For each word in words, add ‘d’ to the end of the word if the word ends in “e” to make it past tense. Otherwise, add ‘ed’ to make it past tense. Save these past tense words to a list called past_tense.
+
+#I started but not done 
+
+#words = ["adopt", "bake", "beam", "confide", "grill", "plant", "time", "wave", "wish"]
+#past_tense = ''
+#for letters in words[0:][0:]:
+    #if letters[:0][:-1] == 'e':
+        #past_tense = past_tense + str(letters)
+
+#print('x' + past_tense)
+#print(words[0][:])
