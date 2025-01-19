@@ -327,3 +327,90 @@ print("The scores are " + result) #this is always one line not multiple
 
 #print('x' + past_tense)
 #print(words[0][:])
+
+#Using Lists as Parameters
+
+#Functions that take lists as arguments and then change them are called modifiers and the changes made are side effects
+#note that when a function is changing the list it is not changing a copy of the list it is using the existing one as a reference
+
+def doubleahh(Steelerlist):
+    for position in range(len(Steelerlist)): #position here is the loop variable that will hold the list we want this to itrate for 
+        Steelerlist[position] = 2 * Steelerlist[position] #it takes the list we will pass through and then sets that equal to the list again but this iteration has us multiplying by tqo
+         
+
+Tomlin = [9,6,0,1]
+print(Tomlin)
+doubleahh(Tomlin)
+print(Tomlin)
+
+#Pure Functions
+
+
+#A pure function is defined as the same thing we had before except this time there are no side effects
+
+#one should clarify that a side effect is when a function is making changes outside of its scope or environment, so like a function changing a global variable is a side effect
+
+x = 11
+def increment_global():
+    global x 
+    x += 1 #so this is changing the x outside the function 
+
+#A pure function on the other hand keeps everything defined its in universe so like
+
+def add(a,b):
+    return a + b #so now everything is kept in the function 
+
+#Basically a pure function only works with its local variables and no outside sources, the global function interacts with the other members of the code which can lead to side effects
+
+#So I will showcase an example of pure vs impure to highlight the 
+
+#def doubleStuff(aList): 
+    """ Overwrite each element in aList with double its value. """
+    for position in range(len(aList)):
+        aList[position] = 2 * aList[position] #this is directly modifying alist, which is external to the code definition
+
+#things = [2, 5, 9]
+#print(things)
+#doubleStuff(things)
+#print(things) #this is impure
+
+
+#def doubleStuff(a_list):
+    """ Return a new list in which contains doubles of the elements in a_list. """
+    new_list = []
+    for value in a_list:
+        new_elem = 2 * value
+        new_list.append(new_elem)
+    return new_list #This is pure because it makes this new_list variable to hold values and returns new_list not anything else
+
+#alist never gets changed because even when we do doublestuff(a_list) which is really doublestuff(things) that does not change a list 
+
+#things = [2, 5, 9]
+#print(things)
+#things = doubleStuff(things)
+#print(things) this is pure
+
+#so pure vs impure just think about what is defined in that first def xx(bleh) and if bleh ever gets changed in that defined statement again it is probably impure
+
+#That is to say of course always strive to write pure functions 
+
+#In short when we want to make a pure function to return a list just follow the trusty doublestuff guide along with 
+
+#initialize a result variable to be an empty list
+#loop
+   #create a new element
+   #append it to result
+#return the result 
+
+#It is quite hard to make lists but python offers an easy way to do this via this thing called list comprehension
+#Where the general syntax is
+
+#[<expression> for <item> in <sequence> if  <condition>]
+
+#for example
+
+SteelersW = [1975,1976,1979,1980,2006,2009]
+SteelersSB = [victory*1 for victory in SteelersW if victory%4==4]
+print(SteelersSB)
+
+#continue with 10.24 and finish on Monday 
