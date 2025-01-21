@@ -413,4 +413,93 @@ SteelersW = [1975,1976,1979,1980,2006,2009]
 SteelersSB = [victory*1 for victory in SteelersW if victory%4==4]
 print(SteelersSB)
 
-#continue with 10.24 and finish on Monday 
+#Nested Lists 
+#This is a list that appears as an element in another list where to extract an element we do so in two steps 
+
+RavensLlol = ["Ravens", 1,3,[0,2]]
+Ravenssuck = RavensLlol[3]
+print(Ravenssuck)
+
+Ravensrllysuck = Ravenssuck[1]
+print(Ravensrllysuck)
+
+alist = [ [4, [True, False], 6, 8], [888, 999] ] #just count each big set of brackets as 1
+print(alist[0])
+print(alist[1])
+
+#So nested is jsut something else in another thing 
+
+#Strings and Lists 
+
+#Sometimes we will have a string like 
+
+FB = "BOy the steelers really are some ahh"
+newFB = FB.split() #so here we can see split breaks the string into a list with 6 elements here
+print(newFB)
+
+#sometimes we can use a delimiter to tell us to limit the characters, serving as a word bounary
+
+FBS = "BOy the steelers really are some ahh"
+newFBS = FBS.split('st')
+print(newFBS) #the point that gets delimited is one element in the new list until the script encounters a new place to cut
+
+#Finally we have the inverse of a split which is to join, where we choose a separator string and then join the list between each of the elements 
+
+finalFBS = ["Steelers", "will", "win", "super bowl", "in", "2025", "season"]
+Truth = '.'
+JFS = Truth.join(finalFBS)
+print(JFS)
+
+print("***".join(JFS)) #so this joined three things to the steelers list
+print("".join(JFS)) #this made a space in between those things
+
+#Important to note that FinalFBS is not modified it is just used as a reference list to make modifications to 
+
+#list type conversions 
+
+#Python has this nifty list function that returns List() as a list 
+
+herewego = list("Shitburgh squealers") #list always breaks this down to a list of characters
+print(herewego)
+
+#Tuples and Mutability
+
+#Tuples are like strings in that they are immutable, where we will define this syntactically as a comma separated sequence of values
+
+bk = ("football",1,2, "season", "never")
+
+#Obviously we cannot use item assignment to change a tuple like we would a string 
+#so cannot do bk[1] = 'win'
+
+#but we can do the below
+
+print(bk[1])
+print(bk[3:5])
+
+print(len(bk))
+
+for thing in bk:
+    print(thing)
+
+bk = bk[:2] + ("legend","steel") + bk[3:]
+print(bk)
+
+#Final chapter on Tuples 
+
+#Functions can return tuples, like if we want regressions statistics we may want that in a tuple form b/c it would look like
+#(mean,25,min,10,max,50,std,.05) #etc or some construction like that
+
+def circlestuff(shape):
+     c = 2 * 3.14159 * shape
+     a = 3.14159 * shape * shape
+     return (c, a)
+
+print(circlestuff(11)) #11 is taking shape value 
+
+#Basically the desired output is a tuple, as it is returned as such (c,a)
+
+#Oh and b/c I never mentioend it string variables are just variables assigned to string where they are enclosed in one set of quotes
+
+#try = "tsnos,somson,somso,sosmos" #string variable and immutable 
+
+#end iterables
