@@ -1,0 +1,100 @@
+#Random flash cards -> the idea being for it to throw facts at you to remember 
+#For sim 2 make the String question based but for the interest of time for SIM 1 they will be fact based
+#this will be in my github [delete this comment]
+
+#Three different modules for SIM 1 
+#Module 1 - Statistical Indicators ending at different market types 
+#Module 2 -> Fundamental data ending on coporate actions 
+#Module 3 -> Corporate Actions ending on general tie in 
+
+#You are in Module 1
+
+import random
+#I have to expound this with docx maybe
+
+
+sim1_material_all = [
+    "arithmetic mean: uses the sum of the numbers in the series, then divides by total number",
+    "arithmetic mean is only accurate when there is no volatility (nearly impossible with the stock market)",
+    "geometric mean: multiplying all the values together, then taking the nth root of the product (whatever the amount of the series is)",
+    "Geometric mean factors in compounding and volatility, making it a better metric of average returns than regular mean",
+    "Geometric mean is good for portfolio performance and provides more accurate measurement of the true return by taking into account year over year compounding that smooths the average",
+    "weighted moving average: Defined as an adjustment to incorporate the most recent data and older sessions drop off as they become less relevant",
+    "Median: middle number is a sorted list of numbers, where we sometimes used instead of mean when there are outliers who otherwise would skew the average",
+    "Mode: most frequently occurring number found in a set of numbers, where it is useful for qualitative data",
+    "Variance: Is a measurement of the spread between numbers in a data set where [(a1 - mean)^2 + (a2 - mean)^2 + ... (an - mean)^2]/n-1 with n being total number of items",
+    "Advantages of using variance are to help determine the risk an investor might assume when purchasing a specific security and it treats all deviations from the mean the same regardless of diretion",
+    "Disadvantages of using variance are it gives added weight to outliers, because squaring them can skew the data and its not easily interpreted",
+    "A use case of variance is for probabibilty distribution",
+    "Variance of 0 means all numbers in the dataset are identical to the mean, where a large variance means their numbers are farther from the mean while small variance means their number is closer to the mean",
+    "Standard deviation is the measure of spread (dispersion) of a dataset relative to its mean as it is the square root of variance, bringing the variance (how far each data point is) back to the original unit of measurement",
+    "We use standard deviation with the annual rate of return, it sheds light on historical volatility of that investment -- the greater the std. Dev. The greater the variance between each price and the mean, so there is a larger price range, so more volatile",
+    "Use cases of standard devation include measuring market volatility and predicting performance trends, and a good measure of investing and trading",
+    "High growth funds will have higher std dev to relative indices because the PMs are trying to generate higher than average returns, but lower/higher stdev isn't better it all depends on your investment and what your risk appetite is"
+    "Z-score is the number of standard deviations a point is from the mean where a z score of 0 represents the score as identical to the mean score, and a z score of 1 indicates that a value is one standard deviation from the mean",
+    "A positive z score means the value is aboe the mean while a negative z score is below the mean",
+    "Z score is calculated as X-MEAN/STDEV, where the z score shows whether a score is normal or not normal for a dataset and helps to compare across different data sets",
+    "Altman Z score is the output of a credit test strenght that helps gauge the likelihood of bankruptcy for a publicly traded company",
+    "Altman Z score is 1.2A + 1.4B + 3.3C + 0.6D + 1.0E, where A = working capital/total assets, B B: retained earnings/total assets,C: EBIT/total assets,D: market value of equity/book value of total liabilities and E = sales/total assets",
+    "An Altman Z score < 1.8 indicates a company is probably heading towards bankruptcy and a score > 3 means the company is less likely to experience bankruptcy",
+    "Bollinger bands are technical indicators that are used to assess market volatility based on standard deviation. In other words, they are a visual representation of the z score and for any given value, the number of standard deviations from the mean is equal to the number of Bollinger bands between price and the moving average",
+    "Correlation is a measure of the degree of how two securities move in relation to each other, where values are between 1 and -1 ",
+    "Correlation of 1 means securities move in lockstep, in same direction, Correlation of -1 means securities move in opposite directions, and a correlation of 0 means they have no relationship at all",
+    "Large cap mutual funds usually have a high positive correlation to the S&P, very close to 1 and Small cap stocks usually have a positive correlation to S&P, not as high as mutual funds but around 0.8",
+    "Correlation is calculated as R = COV(X,Y)/σx*σY",
+    "Correlation is a measure of association the linear relationship (correlation you will notice does not differentiate between independent and dependent variables which is why correlation is not a measure of causality)",
+    "Negative correlations are key in creating a diversified portfolio that can withstand portfolio volatility, because if your securities are negatively correlated then that means they won't move with the benchmark index or really we can say that when one negatively correlated asset falls the other one in a portfolio will rise (meaning that all your securities aren't negatively impacted, if all your securities are negatively correlated then that's a bad thing because your portfolio is most likely failing, but if a couple are negatively correlated then you know you have others that will not be effected",
+    "Covariance is a measure of the directional relationship between the returns on two risky assets, where a positive covariance means that asset returns move together while a negative covariance means returns move inversely",
+    "Covariance is calculated as COV(X,Y) = SUM [(xi - xm) * (yi - ym)] / (n - 1) where xi and yi are given values in the dataset and ym and xm are means of y and x, and n = number of data points",
+    "Covariance does not show the strength of the relationship between two assets, because it has no magnitude as it ranges from positive to negative infinity. To gauge strenght we use corr_coef",
+    "Co-integration: measures how well the assets are tied together (two correlated variables are allowed to wander randomly far apart but not a cointegrated variable",
+    "Covariance is affected by a change in scale because it depends on the units of the variables, specifcally we multiply the deviations of variable meaning if one variable is scaled then the other becomes larger or smaller",
+    "Normal distribution is a probability distribution that is symmetric about the mean, showing that data near the mean are more frequent in occurrence than data far from the mean. Their mean is 0 and stdev is 1 with a skew of 0 and a kurtosis of 3"
+    "Two parameters in normal distribution are mean and standard deviation where 68% of observations are within +/- 1 std. Dev of the mean, 95% within +/- 2 std dev of the mean, and 99.7% within +/- 3 std dev of the mean",
+    "Normal distribution is motivated by the central limit theorem which states that averages calculated from independent, identically distributed random variables have approximately normal distributions, regardless of the type that the variables are samples from (provided it has finite variance)",
+    "Skewness measures the symmetry of a distribution [how the tails look], where negative skewness = left tail of the distribution is longer than the right tail and positive skewness = right tail of the distribution is longer than the left",
+    "Kurtosis measures the thickness of the tail ends of a distribution in relation to the tails of the normal distribution, where Kurtosis > 3 = distribution has heavy tails compared to normal distribution and Kurtosis < 3 = distribution has thin tails compared to normal distribution",
+    "The Chi^2 test is a measure of how a model compares to actual observed data so it is used to test whether two variables are related or independent from one another and also used to test the goodness of fit between an observed distribution and a theoretical distribution of frequencies",
+    "The Chi^2 test is a measure of goodness of fit so we can determine if our observed results are actually for real or one due to chance",
+    "If Chi2 > critical value, reject [the null hypothesis] so we are saying there is a relation and If Chi2 < critical value, accept [accept the null hypothesis] so we are saying there is no relationship [the existing one could be due to chance]",
+    "Normal distributions are  often confused with symmetrical distribution, but this is not correct as symmetrical simply means it can be cut in half and either half mirrors the other -- I.e. Two humps so a normal dist is a TYPE of symmetric distribution",
+    "Probability distribution - describes all the possible values and likelihoods that a random variable can take within a given range, range that is bounded between the minimum and max possible values, but precisely where the possible value is likely to be plotted on the prob distribution depends on factors such as mean, std dev, skewness, kurtosis",
+    "Normal distribution is a form of probability distribution, and the total area under the curve is always 1, or 100%", 
+    "In practice, as price action moves from the mean it is indicative that an asset is either over or undervalued and so traders can use the standard deviation to suggest potential trades (short time frames)",
+    "In HRH if Confidence Level is less than the confidence level cutoff then the distribution is normal, where we will define it as is the probability that a statistical estimate (such as a confidence interval) will contain the true population parameter (like the mean) if you were to repeat the experiment or sampling process multiple times",
+    "Confidence level example: For example, a 95% confidence level means that if you were to repeat the sampling process 100 times, you would expect the true population parameter to fall within the confidence interval 95 times.",
+    "sigma = measure of historical volatility in returns over a period. Basically acts like the standard devationws and shows -1,-2,1, and 2 SD's from mean. Encompass'es 68% and 95%.",
+    "Regression as an idea Attempts to determine the strength and characteristics of the relationship between one dependent variable (usually Y) and a series of other changing variables (aka independent variables)",
+    "Linear regression: uses one independent variable to explain or predict the outcome of the dependent variable Y where we do  Y=a+bX+u where a = intercept, b is slope, Y is dependent and X is independent and U is the regression residual",
+    "Multiple regression:  uses two or more independent variables to predict the outcome (Y) so like Y=a+b1X1+b2X2+b3X3+...+btXt+u",
+    "CAPM one liner: = Uses principles of modern portfolio theory to know if a security is fairly valued (where we assume investors behavior/risk and return distributions). CAPM basically states that return should equal cost of capital, meaning the only way to earn higher returns is to take on more risk.",
+    "T-tests are used to determine if there is a significant difference between the means of two groups, which may be related in certain features",
+    "The T test assumes the data is collected from a representative, randomly selected portion of the total population, the data, when plotted, results in a normal distribution, bell-shaped curve, and the scale of measurement applied to the data collected follows a continuous or ordinal scale, such as scores for an IQ test",
+    "We pair the P value with the T value to see if this measure is reliable",
+    "Independent T test, Paired Sample T test, One sample T test and important to note that there is a difference between small t and Big T",
+    "Small t test is for similar groups and Big T is for different groups",
+    "Beta: determines the volatility of an asset or portfolio in relation to the overall market",
+    "Systematic risk is risk of the entire market declining which is something we can't escape while unsystematic risk is the risk associated with an indivual stock which we can avoid",
+    "Beta > 1 = stock swings more than the market over time and Beta < 1 = stock moves less than the market",
+    "The Beta calculation is covariance of the security and benchmark/variance of the benchmark and we say High beta stocks are typically risker but provide potential for higher returns (the whole idea of CAPM) nd low beta stocks have less risk but lowe returns",
+    "Alpha is a measure of an investment strategy's ability to beat the market so the measure of excess or abnornal rate of return and an alpha of 0 means the portfolio is tracking perfectly with the index, the manager has not lost or gained any additional value compared to the broad market",
+    "alpha = -1 >> the investment under-performed its relative benchmark by 1% and Alpha > 1 means the portfolio has significantly outperformed its benchmark after adjusting for risk (delivered at least 1 percentage point of excess return)",
+    "Levered Beta is the measure of market risk with debt and equity in capital structure (we use this calculation normally)",
+    "Unlevered Beta is the measure of market risk without the impact of debt to see how company's equity contributed to risk profile",
+    "With a positive unlevered beta we invest in stocks when prices are expected to rise, and negative unlevered we invest in stock when prices are expected to decline",
+    "R^2 is a measure to explain how well the model explains or predicts the variability in the data (ranging from 0 to 1, b/c we are squaring correlation values meaning it cannot be negative)",
+    "Adjusted R^2 is used for multiple regression made up of several independent variables",
+    "Nonparametric regression models do not take a predetermined form but instead are constructed according to information derived from the data. (so it is for unlinear data), wguke kubear regresssion is How one variable affects another variable and plotting a line of best fit through these points",
+
+]
+
+#Gen random fact (soon will be question)
+def random_quiz():
+    print(random.choice(sim1_material_all))
+
+#Press enter to gen new prompt (I do this on the terminal (not bloomberg) you can do this on a kernel in BQNT)
+
+
+while True:
+    input("Press Enter for a random study point...")
+    random_quiz()
