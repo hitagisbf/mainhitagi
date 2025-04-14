@@ -1,0 +1,118 @@
+#this will be the def functions section (so like define, main, etc, etc )
+#https://runestone.academy/ns/books/published/thinkcspy/Functions/Functionsthatreturnvalues.html
+
+#python has alot of functions -- all of which take some parameter(s), some functions are ones you have to make with parameters
+
+import math 
+
+print(math.pow(4,3))
+
+#In talking about functions we will mention fruitful and nonfruitful functions
+#Fruitful function is one that returns a value 
+#Non fruitful functions do not return value(s) but this could be by design as they are meant to be used procedurely
+
+def square(x):
+    y = x*x
+    return y #we return the expression to follow it by an expression that is to be evaluated
+
+#the local variable here Y is one local to the definition of our function (it is a nice temporary variable)
+tosquare = 10
+result = square(tosquare)
+print("The result is", result)
+
+#Here is an example of a global variable (which should be avoided)
+
+def badsquare(x):
+    y = x ** power #here we see the error, calling upon "power" is bad and should not be done as it is a poor use case
+    return y #always need a return statement 
+
+power = 2
+result = badsquare(10)
+print(result)
+
+
+#The main thing is anytime you define a function  you NEED a return statement, not a print statement directly after
+
+#Unit testing: Is a way to test small snippets of your code as you go along making it so you can make sure it is working correctly
+
+#One way we use unit tests is via the assert() function, where if we use the function and the code runs fine, it is good but if the code runs into an error then that line signifies where we need to fix 
+
+#assert type(9.2//5) == int as we can see this is wrong so it will throw an error (we fix it by then making ti 9//5)
+
+#aan example with For loops is: 
+
+lst = ['a', 'b', 'c']
+first_type = type(lst[0])
+for item in lst:
+    assert type(item) == first_type
+
+lst2 = ['a', 'b', 'c', 'd']
+first_type = type(lst2[0])
+for item in lst2:
+    assert type(item) == first_type
+
+#where in both lists we iterate the strings through and check if the type is equal to each other -- this fails in list2 bc 17 != string
+
+#Write a program that will add p the first n odd numbers where n is provided by the user
+
+num_user = int(input("enter a number: "))
+sum = 0
+onum = 1 #start at first odd number
+
+for counter in range(num_user):
+    sum = sum + onum
+    onum = onum + 2
+
+print(sum)
+
+def square(x):
+    '''raise x to the second power'''
+    runningtotal = 0 #starts at 0
+    for counter in range(x):
+        runningtotal = runningtotal + x #(10+10+10+10...)
+
+    return runningtotal #always need a return statement 
+
+toSquare = 10 #stops at index 9 (10 total times )
+squareResult = square(toSquare)
+print("The result of", toSquare, "squared is", squareResult)
+
+#to make this multiply we change that to * and then start it at 1 instead of 0 (and change the range to 2 instead of x to square it)
+
+#One can also use functions to call on other functions (think function chaining)\
+
+def cube(x):
+    y = x *x
+    return y  #always need a return statement 
+
+def sum_cube(x,y,z):
+    a = cube(x)
+    b = cube(y)
+    c = cube(z)
+    return a+b+c #always need a return statement 
+
+a = 5
+b = 2
+c = 3
+
+result = sum_cube(a,b,c)
+print(result)
+
+#All of these functions are to say that one shouldn't be hard pressed on reading top to bottom for python statements but instead read in "order of execution"
+#This means that if we have multiple defined functions we need not read the whole body of the function but instead start reading it specifcally when it is called upon
+
+#To illustrate this I will round out the most concise version of python reading 
+
+def pow(b, p): #start here (first function) (1st read) (come back here on the 7th read because pow was called)
+    y = b ** p #execute pow herer (8th read here)
+    return y #finish pow so you return it (9th read)
+
+def least(x): #recognize this entry (second function) (2nd read) (come back to execute the function (5th read))
+    a = pow(x, 2) #follow this order here (6th read)
+    return a #finish least so your return it (10th read)
+
+n = 5 #we get an assignment (third read) 
+result = least(n) #we do something with that (fourth read) (come back here for your 11th read to execute)
+print(result) #finish up here (12th read)
+
+#The Main function (main function...)
