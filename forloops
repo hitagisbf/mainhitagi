@@ -1,0 +1,145 @@
+#This will be all things looping (for, while, etc)
+
+#https://runestone.academy/ns/books/published/thinkcspy/MoreAboutIteration/toctree.html
+
+#revisting the for loop just to remember it is a way to process items in a list and then iterate over them
+
+for a in ["name","names","employees"]:
+    print("hello",a, "this is what it looks like")
+
+#we also know of looping to act as an accumulator to sum n integers over a range (or any other real number for that matter)
+
+def sum(bound):
+    thesum = 0
+    for number in range(1,bound+1): #this starts at 1 all the way up to 4 and then sums all those numbers up (1,2,3,4)
+        thesum = thesum + number
+    return thesum
+
+print(sum(4)) #the range stops at the upper bound which is why need the +1 to make it 5 (so it will stop at the 5 instead of the 4)
+
+#What is a nested loop?
+#A nested loop is a loop inside of another loop (so two or more for loops), which we see in two examples below
+
+for outer in range(3):
+    for inner in range(2):
+        print(f"outer: {outer}, inner: {inner}")
+
+#the total ouputs in a nested loop is the first loops amount * second loop amount (and so on and so on )
+
+
+def printnums(x,y):
+    for h in range(y):
+        print("We made it here!")
+        for i in range(x):
+            print("We made it here!")
+
+printnums(5, 3) #this is an example of a nested loop where the first iteration gets run 5 times then loops for 3 times over (because it is nested)
+
+#what is the while loop? 
+
+#For statement: Definite iteration while the while loop is an Indefinite repetition (a repetition based on a boolean)
+
+for x in range(10):
+    print("Test")
+
+x = 0
+while x < 10:
+    print("Test")
+    x = x + 1 #accumulator pattern 
+
+print("Done")
+
+#this is the same idea but the loop is different where we count the occurences until it fails to let the while statement know when it should stop
+#after it hits that break point then it prints "done"
+
+#The while in python is different from that of English, In English "while X do Y" means when X is false our process is stopped but in python it isn't an immediate stop it means we execute for the whole body, even if the condition is false somewhere in the middle
+
+#this in practice can be seen here
+
+n = 1
+x = 2
+
+while n < 5:
+    n = n + 1
+    x = x + 1
+    n = n + 2
+    x = x + n
+
+print(n, x)
+
+#where the first run of this yields an n = 4 which is less than 5 causing it to run again (but it will not stop running when n > 5 in the loop, it will stop when the loop finishes running)
+#meaning it yields values of (7,15)
+
+#example problems
+
+#Count Up!: Ask the user for a number, then use a while loop to print all numbers from 1 up to that number.
+
+user_input = input("number: ")
+
+x = 1 #so the loop needed somewhere to start
+
+while x <= int(user_input):
+    print(x)
+    x = x + 1 #condition here 
+
+print("test")
+
+#Password Checker: Keep asking the user for a password until they type the correct one.
+
+password = "Test"
+
+user_password = input("password: ")
+
+while user_password != password:
+    user_password = input("try again: ") #the key part here is always setting the variable that you make equal to something to make it a conditional check so it doesnt fun infinitely
+
+print("done")
+
+
+#Countdown Timer: Start from a given number and count down to 0, printing each number along the way.
+
+test_num = input("new number: ")
+
+while int(test_num) >= 0:
+    print(test_num)
+    test_num = int(test_num) - 1 #its always about this condition 
+
+print("test num")
+
+#Sum Until Zero: Keep asking the user for numbers and add them up — stop when they enter 0, then print the total.
+
+
+total = 0
+
+user_sum = int(input("number here: "))
+
+while (user_sum) != 0:
+    total += user_sum
+    user_sum = int(input("enter new number: "))
+
+print(total) #this one I needed a variable to store it to accmulate it (so accumulator pattern)
+
+#Guess the Number: Create a simple number guessing game. Keep looping until the user guesses the right number.
+
+fool = 81
+
+user_guess = int(input("enter a number: "))
+
+while user_guess != fool:
+    user_guess = (int(input("enter a new number: "))) #same thing as password just make sure its an input which doesnt need a print statement
+
+print("ok")
+
+#pick back up on chapter 8 of thinkcs 
+
+#assert with for loops
+
+lst = ['a', 'b', 'c']
+first_type = type(lst[0])
+for item in lst:
+    assert type(item) == first_type
+
+lst2 = ['a', 'b', 'c', 'd']
+first_type = type(lst2[0])
+for item in lst2:
+    assert type(item) == first_type
