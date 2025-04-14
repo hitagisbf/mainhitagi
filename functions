@@ -116,3 +116,67 @@ result = least(n) #we do something with that (fourth read) (come back here for y
 print(result) #finish up here (12th read)
 
 #The Main function (main function...)
+
+def greet(name):
+    print(f"Hello, {name}!")
+
+def main():
+    user_name = input("Enter your name: ")
+    greet(user_name)
+
+if __name__ == "__main__": #this portion of the sheet is important as it is necessary and integral for the main function to work
+    main()
+
+def squareit(n):
+    return n * n
+
+def cubeit(n):
+    return n*n*n
+
+def main():
+    anum = int(input("Please enter a number: "))
+    print(squareit(anum))
+    print(cubeit(anum))
+
+if __name__ == "__main__":
+    main()
+
+#one has to read this in the same way they would with regular function
+
+#final test will be to calculate the area of a circle 
+
+def distance(x1, y1, x2, y2):
+        dx = x2 - x1
+        dy = y2 - y1
+        dsquared = dx**2 + dy**2
+        result = dsquared**0.5
+        return result
+
+def area(radius):
+    b = 3.14159 * radius**2
+    return b
+
+def area2(xc, yc, xp, yp):
+    radius = distance(xc, yc, xp, yp)
+    result = area(radius)
+    return result
+
+print(area2(0,0,1,1))
+
+#Is It Even? write a function is_even(n) that returns True if the number is even, False otherwise.
+
+def is_even(n):
+    if n % 2 == 0:
+        print("good")
+        return True
+    else:
+        print ("false")
+        return False
+
+numbertest = int(input("enter num: "))
+numresult = is_even(numbertest)
+print(numresult)
+
+#The main thing here is using Return True and Return False, We use that because we want our function to spit back a true or false (we are asking it a yes or no question)
+
+#so if our function is checking something then T/F is useful but other things may be useful like a string message if we want a message for example
