@@ -4,3 +4,4 @@ Teaching Resource -> https://runestone.academy/ns/books/published/thinkcspy/inde
 Teaching Resource -> https://www.amazon.com/Mastering-Pandas-Finance-Michael-Heydt/dp/1783985100
 Teaching Resource -> https://github.com/chongjason914/pandas-tutorial
 Resource -? https://www.kaggle.com/
+https://cfm.ehu.es/ricardo/docs/python/Learning_Python.pdf
