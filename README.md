@@ -5,3 +5,4 @@ Teaching Resource -> https://runestone.academy/ns/books/published/thinkcspy/inde
               Teaching Resource -> https://github.com/chongjason914/pandas-tutorial
               Teaaching Resource -> https://www.kaggle.com/
               Teaching Resource -> https://assets.openstax.org/oscms-prodcms/media/documents/Introduction_to_Python_Programming_-_WEB.pdf
+              practice done here -> https://github.com/karan/Projects/blob/master/README.md
