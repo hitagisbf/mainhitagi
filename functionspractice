@@ -1,0 +1,123 @@
+#Double Trouble: Write a function double(n) that returns double the number given.
+
+def double(n):
+    y = n*2
+    return y
+
+todouble = int(input("enter number: "))
+final = double(todouble)
+print(final)
+
+#How to know when to return a value or not
+
+#When the input is already known (like if I said y = something at the end of the code script)
+#I do not need to return already known values
+#In the case that I am creating something new like in that case y = n*2 then that is a whole new creatiion where I tell python "This is what I'm doing"
+#All in all -- when creating something return it 
+#When the value will be known -- do not return it 
+
+#Add Two Numbers: Write a function add(x, y) that returns the sum of two numbers.
+
+def add(x,y):
+    z = x+y
+    return z 
+
+toadd1 = int(input("enter a number: "))
+toadd2 = int(input("enter a number: "))
+result = add(toadd1,toadd2)
+print(result)
+
+#First Letter: Write a function first_letter(word) that returns the first letter of a word.
+
+def first_letter(word):
+    return word
+
+t = input("enter a word: ")
+
+final = first_letter(t[0])
+print(final)
+
+#Main specific ones 
+
+#Temperature Check: Ask the user for a temperature in Celsius and convert it to Fahrenheit using a function.
+
+#I need logic that handles the conversion
+
+def main():
+    temp = int(input("enter celsius temp: "))
+    fahr = (temp * 9/5) + 32
+    print(fahr)
+
+if __name__ == "__main__":
+    main()
+
+#Miles to Kilometers: Write a function that converts miles to kilometers. Use main() to ask the user how many miles, then print the result.
+
+def main():
+    mile = int(input("enter miles walked: "))
+    kilo = mile* 1.60934
+    print(kilo)
+
+if __name__ == "__main__":
+    main()
+
+#Grade Checker: Write a function that returns the letter grade (A, B, C, etc.) for a number grade (90+, 80+, etc.).
+
+def main():
+    grade = int(input("enter a number here: "))
+    if 90 <= grade <= 100:
+        print("A")
+    elif 80 <= grade <= 89:
+        print("B")
+    elif 70 <= grade <= 79:
+        print("C")
+    elif 60 <= grade <= 69:
+        print("D")
+    else:
+        print("you failed")
+
+if __name__ == "__main__":
+    main()
+
+#a different way to write this would be
+
+def letter_grade(score):
+    if 90 <= score <= 100:
+        return "A"
+    elif 80 <= score < 90:
+        return "B"
+    elif 70 <= score < 80:
+        return "C"
+    elif 60 <= score < 70:
+        return "D"
+    else:
+        return "F"
+
+def main():
+    grade = int(input("Enter a number: "))
+    print("Letter grade:", letter_grade(grade))
+
+if __name__ == "__main__":
+    main()
+
+#Countdown Timer: Ask the user for a number and use a function to print a countdown from that number to 0.
+
+
+def main():
+    count_input = int(input("test a number: "))
+    for i in range(count_input,-1,-1): #start,stop,step
+        print(i)
+
+if __name__ == "__main__":
+    main()
+
+#Repeat After Me Ask the user for a word and a number. Use a function to print the word that many times.
+
+def main():
+    word_input = input("enter a word: ")
+    num_input = int(input("enter a number: "))
+    for i in range(num_input):
+        print(word_input)
+
+if __name__ == "__main__":
+    main()
