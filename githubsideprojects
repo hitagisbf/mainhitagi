@@ -1,0 +1,161 @@
+#Will be stuff based off of https://github.com/karan/Projects/blob/master/README.md
+
+#Find PI to the Nth Digit - Enter a number and have the program generate PI up to that many decimal places. Keep a limit to how far the program will go.
+
+#I did 
+
+second = int(input("enter a number: "))
+pi = ['3.1415926535']
+
+print(pi[0][0:second])
+
+#------better version----------
+def pi(n):
+    pi = '3.1415926535'
+    print(pi[:n])
+
+digits = int(input("enter a number: "))
+pi(digits)
+
+#Fibonacci Sequence - Enter a number and have the program generate the Fibonacci sequence to that number or to the Nth number.
+
+def fib(s):
+    if s <= 1:  
+        return s
+    return fib(s-1) + fib(s-2)
+
+third = int(input("Enter a number: "))
+print(fib(third))
+
+#---------Recursive statement if necessary-----
+def fib_recursive(n, a=0, b=1):
+    if n == 0:
+        return
+    print(a, end=" ")
+    fib_recursive(n-1, b, a+b)
+
+third = int(input("Enter how many Fibonacci numbers to print: "))
+fib_recursive(third)
+
+#Prime Factorization - Have the user enter a number and find all Prime Factors (if there are any) and display them.
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2,n):
+        if n % i == 0: #if the n is divisible by the i (so like 3 divided by 2 is not equal to 0 so it returns True not False)
+            return False
+    return True
+
+prime_test = int(input("enter number: "))
+pr_result = is_prime(prime_test)
+print(pr_result)
+
+#Mortgage Calculator - Calculate the monthly payments of a fixed term mortgage over given Nth terms at a given interest rate. Also figure out how long it will take the user to pay back the loan. 
+
+import math
+
+r = float(input("enter interest rate: "))/100/12
+p = int(input("enter monthly payment:"))
+L = int(input("enter loan amount: "))
+
+def mortgage(): #you don't always need a variable here if you don't intend to return it
+    mort = abs(math.log((p/p-r*L))) / math.log(1+r)
+    return mort
+
+final_n = mortgage()
+print(math.floor(final_n/12))
+
+#Change Return Program - The user enters a cost and then the amount of money given. The program will figure out the change and the number of quarters, dimes, nickels, pennies needed for the change.
+
+quarter = .25 
+dime = .10 
+nickel = .05 
+penny = .01 
+
+
+cost = (float(input("enter cost of goods: ")))
+money = (float(input("enter money to pay with: ")))
+final_amount = money - cost
+
+quarter_mb = final_amount // quarter #floor division to convert
+partial_change = final_amount - quarter_mb * quarter #just the remainder of quarters (convert that back to quarter)
+dime_mb = partial_change // dime
+dpartial_change = partial_change - dime_mb * dime
+nickel_mb = dpartial_change // nickel
+npartial_change = dpartial_change - nickel_mb * nickel
+penny_mb = npartial_change // penny
+ppartial_change = npartial_change - penny_mb * penny
+
+print("your final change is ", final_amount,quarter_mb,dime_mb, nickel_mb, penny_mb)
+
+#In the future I want to make the above better by adding some hierarchy to it but not sure (maybe some if statements)
+
+#Collatz Conjecture - Start with a number n > 1. Find the number of steps it takes to reach one using the following process:
+# If n is even, divide it by 2. If n is odd, multiply it by 3 and add 1.
+
+num = int(input("enter a number greater than 1: "))
+
+while num > 1:
+    if num % 2 == 0:
+        num = num //  2 #also important to remember no need for a print statement always update your variable
+    else:
+        num = num * 3 +1 
+    print(num) #you always need a loop exitor always always
+
+print("done")
+
+#Reverse a String - Enter a string and the program will reverse it and print it out.
+
+my_list = input("enter word: ")
+
+reversed_list = reversed([my_list]) #you have to reverse your list because lits are mutable and strings are not 
+
+print((reversed_list))
+
+#pig_latin: o create the Pig Latin form of an English word the initial 
+#consonant sound is transposed to the end of the word and an ay is affixed (Ex.: "banana" would yield anana-bay)
+
+def pig_latin(word):
+    latin = word[1:]
+    pi = word[0]
+    result = latin + '-' + pi + 'ay'
+    return result
+
+pig = input("Enter a word: ")
+translated = pig_latin(pig)
+print(translated)
+
+#Count Vowels - Enter a string and the program counts the number of vowels in the text. 
+#For added complexity have it report a sum of each vowel found.
+
+
+word = input("enter text: ")
+vowel_list = ['a','e','i','o','u']
+
+for i in word:
+    if i in vowel_list:
+        print(i)
+
+#-------# better version 
+def vowel(w):
+    vowel_list = ['a','e','i','o','u']
+    vowels_found = ""
+    for i in w:
+        if i in vowel_list:
+            vowels_found += i #for every i found that meets criteria we update by one 
+    return vowels_found
+
+word = input("enter a word: ")
+test = vowel(word)
+print(len(test))     
+
+def count(sentence):
+    sent_box = 0 #knowing when to make this [] or 0 or ""
+    for i in sentence.split():
+        sent_box += 1
+    return sent_box
+
+sent = input("enter sentence: ")
+tent = count(sent)
+print(tent)
