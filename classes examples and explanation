@@ -1,0 +1,228 @@
+#This will all be for classes as I do not know what those are but I have stumbled across them in my studies 
+
+
+#Class -> type of object with fields and procedures, so it basically acts as a blueprint for creating objects
+#Where the individual objects of the class types are instances
+
+#class abcdxyz:
+    #def __init__(text):
+        #assign stuff to default values
+        #text.assign = 'whatever'
+
+    #def none init(text):
+        #we can call these executions
+
+class Cat: #class name 
+    def __init__(self): #init set up [this is a method]
+        self.name = 'Kitty' #assignment in the init  #[.name is an attribute]
+        self.breed = 'domestic short hair' #[.breed is an attribute]
+        self.age = 1 #[.age is an attribute]
+    def print_info(self): #this is another method 
+        print(self.name, 'is a ', self.age, 'yr old', self.breed) #execute
+
+pet_1 = Cat() #actually do reg def statement work [call this instance]
+pet_2 = Cat() #actually do reg def statement work  [call this instance]
+
+#init gets called everytime we make a neww instance of a class so for example
+
+class Rectangle:
+    def __init__(self): #should always be self here 
+        self.length = 1
+        self.width = 1
+    def area(self):
+        return self.length * self.width #self is replaced with the actual instance here
+
+room_1 = Rectangle() #init is called here (new instance made of a class)
+room_1.length = 10 #instance attribute 
+room_1.width = 15 #instance attribute 
+print("Room 1's area:", room_1.area())
+room_3 = Rectangle() #init is called here as well 
+room_3.length = 12 #instance attribute 
+room_3.width = 14 #instance attribute 
+print("Room 3's area:", room_3.area())
+
+#Two types of attributes instance v class attribute
+
+#instance attribute is a unique variable for each instance of a CLASS and we see it via instance_name.attribute name
+#class attribute belongs to class and is shared by all classes
+
+#class Dog:
+    # Class attribute
+    #species = "Canis familiaris" -> class attribute because it pertains to the whole set as that is when it was defined (before the init)
+
+    #def __init__(self, name, age): important to note that init can have multiple parameters
+        # Instance attributes
+        #self.name = name
+        #self.age = age
+
+#Magic method is a method to perform internal actions for a user so like __init__ is a magic method and anytime we make a new instance it is a magic method
+#Bc it has __xxx__
+
+#several arithmetic operators already have magic methods so like addition is __add__(self,other) for example
+#The act of overloading one of these operators means customizing the function to allow easy access to changes
+
+#When we overload the arithmetic operator we are overloading it based on the class so for example
+
+class Pair:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+    def __sub__(self, other):
+        return Pair(self.x - other.x, self.y - other.y) #we overload self and other with a return to the class here
+p1 = Pair(10, 2)
+p2 = Pair(8, 4)
+p3 = p1 - p2
+print(p3.x, p3.y)
+
+#There are also overloading for comparisons like less than, greater than, equal, not equal, etc 
+#So like __lt__, __gt__, __le__, __ge__, __eq__, __ne__
+
+#I think that is it for the chapter but tomorrow/Friday I will try the examples in the book and then go onto the ones in the main github 
+
+#--------------------------------------------------------------------------------------------#
+
+#Write a class, FlightTicket, as described below. Default values follow the attributes. Then create a flight
+#ticket and assign each instance attribute with values read from input.
+#Instance attributes:
+#flight_num: 1
+#airport: JFK
+#gate: T1-1
+#time: 8:00
+#seat: 1A
+#passenger: unknown
+#Class attributes:
+#airline: Oceanic Airlines
+#airline_code: OA
+#Method:
+#__init__(): initializes the instance attributes
+#print_info(): prints ticket information (provided in template)
+
+class FlightTicket:
+    airline = 'Oceanic Airlines' #the point of this is that all FLighttickets belong to oceanic airliens for example so it is all stored as a class attribute which you can then call upon
+    airline_code = 'OA'
+
+    def __init__(self, flight_num, airport,gate,time,seat,passenger): #if you have multiple things to call then you call it there
+        self.flight_num = flight_num
+        self.airport = airport
+        self.gate = gate
+        self.time = time
+        self.seat = seat
+        self.passenger = passenger
+    def print_info(self):
+        print(self.passenger,'departs on flight #',self.flight_num,'at',self.time,'from',self.gate, 'in',self.seat)
+
+flight_num = input("enter: ")
+airport = input("enter: ")
+gate = input("enter: ")
+time = input("enter: ")
+seat = input("enter: ")
+passenger = input("enter ")
+
+ticket = FlightTicket(flight_num, airport, gate, time, seat, passenger)
+ticket.print_info()
+
+#Class attributes are common across all objects made from that class 
+
+#------------------------------------------------------------------------------------------------------#
+
+
+class Book:
+    Imprint = 'Fantasy Tomes'
+
+    def __init__(self,title,author,year,pages): #call params to exexcute here
+        self.title = title #assign instance attributes here
+        self.author = author
+        self.year = year
+        self.pages = pages
+    def print_info(self): #print staement 
+        print(self.title, self.author,self.year,self.pages,self.Imprint) #print all the stuff 
+
+title = input("enter title: ")
+author = input("enter author: ")
+year = input("enter the year: ")
+pages = input("enter the pages: ")
+
+title2 = input("enter a title: ")
+author2 = input("enter an author: " )
+year2 = input("enter the year: ")
+pages2 = input("enter a page number: ")
+
+book1 = Book(title,author,year,pages) #call upon execution of the class that everything belongs to 
+book2 = Book(title2,author2,year2,pages2)
+
+book1.print_info() #the point is that these are all stored under the same overarching class meaning we can make multiple
+
+book2.print_info() #print them both 
+
+#the important thing is multiple instance attributes to do multiple things aas we now have more freedm over what we can do 
+
+#------------------------------------------------------------------------------------------------------------------#
+
+#Write a class, VendingMachine, as described below. Default values follow the attributes. Ex: count's
+#default value is 0. Create a vending machine using a value read from input and call instance methods.
+#Instance attributes: count: 0 and max: 0
+#Methods:
+#__init__(num): initializes count and max with num parameter
+#refill(): assigns count with max's value and prints "Refilled"
+#sell(order): assigns count with the value of count minus order and prints "Sold: [order]"
+#print_stock(): prints "Current stock: [count]
+
+class VendingMachine:
+
+    def __init__(self,num): #all these need a 'self' and the respective extra parameters
+        self.count = num
+        self.max = num
+    def refill(self):
+        self.count = self.max
+        print("refilled")
+    def sell(self,order):
+        self.count -= order
+        print("sold: ",order)
+    def print_stock(self):
+        print('Current stock:', self.count)
+
+num = int(input("enter number here: "))
+machine = VendingMachine(num)
+ 
+machine.print_stock()
+machine.sell(3)
+machine.print_stock()
+machine.refill()
+machine.print_stock()
+
+#----------------------------------------------------------------------------------------------------------------------#
+
+#The ExerciseLog class has two instance attributes: e_type, the type of exercise, and duration, the time
+#spent exercising. Overload the + operator to combine two ExerciseLogs such that:
+#If the exercise types are different, combine them with " and " in between. Else, use the same type and don't duplicate.
+#Add durations together.
+
+
+
+class Exceriselog:
+    def __init__(self, e_type="", d_type=0): #whenever we have counters or anything I like this to be intialized
+        self.e_type = e_type
+        self.d_type = d_type
+    def __add__(self, other):
+        if self.e_type != other.e_type:
+            combined_type = self.e_type + ' and ' + other.e_type
+        else:
+            combined_type = self.e_type
+        
+        combined_duration = self.d_type + other.d_type
+        return Exceriselog(combined_type,combined_duration) #when you overload the magic operator you have to return the class
+    
+    def __str__(self):
+        return f"{self.e_type}: {self.d_type} minutes"
+
+type1 = input("enter something: ")
+duration1 = int(input("enter something: "))
+
+type2 = input("enter something: ")
+duration2 = int(input("enter something: "))
+
+log1 = Exceriselog(type1, duration1) #when we make our inputs we have to pass the class into it to actually make it execute
+log2 = Exceriselog(type2, duration2)
+
+combined = log1 + log2
+print(combined)
