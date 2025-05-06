@@ -51,5 +51,11 @@ print(ein) #on looks np.empty and np.zeros appear to do the same thing
 
 #why are Initial placeholders important?
 #good for efficiency and avoid resizing, avoids unintended values with things like empty and zeros
-#good for code clarity as well b/c we define our stuff even if we don't know what to do with it 
+#good for code clarity as well b/c we define our stuff even if we don't know what to do with it
 
+def square_list(values):
+    return [x ** 2 for x in values]
+
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = square_list(numbers) #b/c square_list was originally values we now pass this into the numbers list that we made to square them.
+print(squared_numbers) 
