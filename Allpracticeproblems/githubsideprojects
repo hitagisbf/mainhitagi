@@ -111,7 +111,17 @@ my_list = input("enter word: ")
 
 reversed_list = reversed([my_list]) #you have to reverse your list because lits are mutable and strings are not 
 
+print((reversed_list)) #this will actually print out the iterator object and not the actual reversed string
+
+#To get the reversed string we either need to slice it with [::-1] or use a ''.join() instead (we have seen ''.join() to make a list strings)
+
+#gold model
+
+my_list = input("enter word: ")
+reversed_list = ''.join(reversed(my_list))
+
 print((reversed_list))
+
 
 #pig_latin: o create the Pig Latin form of an English word the initial 
 #consonant sound is transposed to the end of the word and an ay is affixed (Ex.: "banana" would yield anana-bay)
