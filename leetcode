@@ -1,0 +1,72 @@
+#Leetcode problems to get better at python  
+
+#Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+def num_store(first,second): #first and second are just placeholders for the actual variables outside (because we want the function to be reusable)
+    store_numbers = {}
+    for i, nums in enumerate(second): #i is the index, nums is the loop variable that iterates through all of num
+        total = first - nums #we enumerate and then subtract to get our total (we subtract by the index value)
+        if total in store_numbers: #if the number is stored in the dictionary then we will use it again
+            return [store_numbers[total],i] #and we will return the dictionary along with the total and its index value
+        store_numbers[nums] = i #store this number and its index in the dictionary so we can check it later 
+        
+
+tnext_num = int(input("enter target number: "))
+tnum = input("enter some numbers: ") #I need this to be a list and then split() it to make it work 
+nt_num = [int(x) for x in tnum.split()]
+print(num_store(tnext_num,nt_num))
+
+#Second_leetcode: Given a roman numeral, convert it to an integer.
+
+#The important thing is understanding the base 
+
+#hint1: make a dictionary to store values (they are given)
+# hint2: you will want to subtract and add (also take into account that you need an accumulator pattern (so something starting at 0 and then changing))
+# employ the use of reversed: for char in reverse(s)   
+
+def roman(test):
+    roman_dictionary = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000} #initialize dictionary of values 
+
+    num_start = 0 #accumulator variables since we are counting either up and down from the input 
+    num_prev = 0
+
+    for x in reversed(test): #we loop through a reversed list because in Roman IV means 4 (because a smaller number coming before a large one means subtraction so we need to reverse it and then subtract)
+        num = roman_dictionary[x] #variable here to hold the index of the loop in roman_dictionary
+        if num < num_prev: #if the indexed value is less than the start then we subtract it (because it was reversed)
+            num_start -= num
+        else: 
+            num_start += num #otherwise we add to num_start
+            num_prev = num #finally we update the previous number with what the previous value is (because we need to compare)
+    
+    return num_start
+
+test_roman = input("enter roman: ")
+print(roman(test_roman))
+
+#Length of last word: Given a string of words and spaces return the length of the last word in the string
+
+word = input("enter a phrase: ")
+
+new_word = word.split()
+print(len(new_word[-1]))
+
+#we can use a def function here as well
+
+def len_word(phrase):
+    type = phrase.split()
+    if type:
+        return len(type[-1])
+    else:
+        print("nothing")
+
+us_input = input("enter a phrase:")
+print(len_word(us_input)) #always remember here we return the def function(replace by the input which replaces what defined it in the first place)
+
+#Finished two_sum, roman to integer, and length of last word (which I did all on my own)
+
+#Find the Index of the first occurence in a string 
+
+haystack = input("enter something:")
+needle = input("enter another thing")
+
+#I will need to watch the leetcode video on this https://www.youtube.com/watch?v=0iDiUuHZE_g
