@@ -1,0 +1,32 @@
+import pandas as pd #table manipulation
+import numpy as np #perform operations
+import matplotlib.pyplot as plt #graphing
+import matplotlib
+matplotlib.use('TkAgg')
+import ipywidgets as widgets #I think I have to keep widgets for last 
+
+#Airline Analysis to analyze worst airlines and airports for delays, compute delay distributions, plot delay reasons with pie or bar charts
+
+
+airline = pd.read_csv('Airlinedataset.csv')
+#print(airline.iloc[0,0]) #iloc integer based logation, loc is label based (we need to know the name of our labels)
+#print(airline.loc[0:, ['Airport Name', 'Airport Country Code','Flight Status']]) #basis of my analysis
+
+#Identify worse airports and airlines for delays/cancellations
+#print(airline.loc[airline['Flight Status'].isin (['Delayed', 'Cancelled']), ['Airport Name', 'Airport Country Code']])
+
+#for my histogram i want to convert the times to an hours and minutes set up 
+Delay_time = airline.iloc[:, -1] #for some reason a loc for FLight Delay Time wasn't working even after I verified it was there
+meantime = np.mean(Delay_time)
+standevtime = np.std(Delay_time)
+plt.plot(airline.index, Delay_time, label='Delay time',linewidth=10) #matplotlib basig graphing
+#plt.axhline(meantime,color='blue',linestyle='--',label='Mean_Time')
+#plt.axhline(meantime+standevtime,color='Red',linestyle='--',label='+1StdDev')
+#plt.axhline(meantime-standevtime,color='gray',linestyle='--',label='-1StdDev')
+plt.legend()
+plt.title('Flight Delay time')
+plt.show() #need the parens
+
+Flight_hours = Delay_time // 60 #time conversion that may soon be necessary
+Remaining_Flight_time = Flight_hours % 60 #time conversion
+#print(Flight_hours, Remaining_Flight_time)
