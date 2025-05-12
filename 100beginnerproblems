@@ -1,0 +1,266 @@
+#print hello world
+print("hello world")
+
+#user provides two numbers and selects an operation
+
+num1 = int(input("enter a number: "))
+num2 = int(input("enter another number: "))
+sign = input("enter calculation sign: ")
+
+if sign == '+':
+    print(num1+num2)
+elif sign == '-':
+    print(num1-num2)
+elif sign == '*':
+    print(num1*num2)
+elif sign == '/':
+    if num2 == 0:
+        print("no good")
+    else:
+        print(num1/num2)
+
+import random 
+
+random_range = 64
+ranguess = int(input("enter a random number from 1 to 65: "))
+
+random_range = 64
+ranguess = int(input("Enter a number from 1 to 65: "))
+
+while ranguess > 1:
+    if ranguess == random_range: #doing the right guess first
+        print("Correct! You guessed the number.")
+        break
+    elif 2 < ranguess < 7:
+        print("Too low, try again!")
+    elif 10 < ranguess < 30:
+        print("Closer, but not really.")
+    elif 31 < ranguess < 64:
+        print("You're super close!!")
+    else:
+        print("Way off. Try again!")
+
+    ranguess = int(input("Enter a new number: ")) #this is our way to exit the while loop by always updating it
+
+print("Done")
+
+#the way to exit the while loop must be universal to the whole loop not just a piece
+
+#To do list Applicatioon where users can add edit and delete tasks
+
+1 = 'Add Task'
+2 = 'Edit Task'
+3 = 'Delete Task'
+4 = 'Exit'
+
+task_hold = []
+select = input("select an option: ")
+
+if select == 1:
+    add = input("enter your task: ")
+    task_hold.append(add)
+    print("Task Added Succesfully")
+elif select == 2:
+    edit = input("enter your task index to edit: ")   
+
+#Simulate rolling a dice 
+
+import random
+
+randle = random.randrange(1,6)
+print(f"The dice were rolled: {randle}")
+
+#Simple weather conversion 
+
+weat = int(input("enter temperatture: "))
+choose=  int(input("choose 1 for F to C or 2 for C to F: "))
+
+celcconverssion = (weat -32) * 5/9
+fahrenheitconversion = (weat * 9/5) + 32
+
+if choose == 1:
+    print(celcconverssion)
+else:
+    print(fahrenheitconversion)
+
+#bonus make this as a define function -- if you do the def must be first and you need to pass in two parems at the end for a result to occur
+
+
+#Allow user to set alarms [7]
+
+clock_time = input("Set Alarm Time: ")
+
+print(f"Alarm! It's {clock_time}. Time to wake up!")
+
+#random passweord generator: randomly generated passwords of specified length [8]
+
+
+tr = int(input("enter lenght it should be: "))
+tr_folder = ['a','b','c','d','e','f','g','h','i','j','k','1','2','3','4','-','}','@']
+tr_empty = []
+for i in range(tr):
+    random_tr = random.choice(tr_folder)
+    tr_empty.append(random_tr)
+    password = ''.join(tr_empty) #when we have a list we can turn it into a string via ''.join(list)
+print(password)
+
+#the other way to write this is with tr_empty being "" and then tr_foler being "text"
+
+#Currency conversion
+
+def currency_test(cur):
+    choice_currency = {1: "EUR", 2: "GBP", 3: "JPY", 4: "CAD"}
+    EUR_CONV = start_currency * .88 
+    GBP_CONV = start_currency * .75
+    JPY_CONV = start_currency * 143.07
+    CAD_CONV = start_currency * 1.38
+    if conversion_choice == 1:
+        return (f"Converted amount in EURO: {EUR_CONV}") #return statements in functions are integral 
+    elif conversion_choice == 2:
+        return (f"Converted amount in GBP: {GBP_CONV}") #essentially if this was just a print statement it would return 'NONE'
+    elif conversion_choice == 3:
+        return (f"Converted amount in JPY: {JPY_CONV}") #to avoid that we return something at the end (if we need to print additional we can do that in a separate line)
+    elif conversion_choice == 4:
+        return (f"Converted amount in CAD: {CAD_CONV}") #but we always need a return statement in our defined functions 
+    else:
+        return ("No applicable currency selected")
+
+start_currency = int(input("enter the amount in USD: "))
+conversion_choice = int(input("enter a currency to choose from: 1 for EUR, 2 for GBP, 3 for JPY, 4 for CAD: "))
+final_currency = currency_test(start_currency)
+print(final_currency)
+
+#BMI Calculator: Develop a body mass index calculator based on user input 
+
+weight = int(input("enter weight (in kilograms): "))
+height = int(input("enter height (in meters): "))
+
+BMI_CALC = weight/height
+
+if BMI_CALC < 25:
+    category = "underweight" #rememebr you can always make a new variable to handle these things in your code 
+elif BMI_CALC < 50:
+    category = "good weight"
+elif BMI_CALC < 75:
+    catgory = "slightly fat"
+elif BMI_CALC < 100:
+    category = "super fat"
+else:
+    category = "really obese"
+
+print(f"BMI: {BMI_CALC}, Category: {category}")
+
+#Palindrome checker
+
+palindrome = input("enter word: ")
+reversed_p = ''.join(reversed(palindrome))
+
+
+if palindrome == reversed_p:
+    print(f"{palindrome} is a palindrome")
+else:
+    print(f"{palindrome} is not a palindrome")
+
+
+#4 : Build a basic to-do list application where users can add, edit, and delete tasks.
+
+tasks = [] #its a task list so by nature we want to be able to store things 
+
+# Function to display the available options
+def display_menu():
+    print("\n1. Add Task") #\ makes a new line character
+    print("2. Edit Task")
+    print("3. Delete Task")
+    print("4. Exit")
+
+while True: #When we want to continuosly interact with our user we use a while loop 
+    # Display the menu options
+    display_menu()
+    
+    # Get the user's choice
+    choice = input("Select an option: ")
+
+    # Option 1: Add Task
+    if choice == '1':
+        # Prompt the user to enter a task
+        task = input("Enter task: ")
+        # Add the task to the list
+        tasks.append(task) #makes sense basic accumulator pattern here to ADD a task 
+        print("Task added successfully.")
+
+    # Option 2: Edit Task
+    elif choice == '2':
+        if tasks: #my problem is I didn't know I could do "If tasks do something else (I thought I would need another if block to do this)"
+            # Display the current tasks with their indices
+            for index, task in enumerate(tasks): #for variable, list in enumerate(list) bc enumerate keeps track of the index
+                print(f"{index + 1}. {task}")
+            # Prompt the user to enter the index of the task to edit
+            try: #try is error handling
+                task_index = int(input("Enter task index to edit: ")) - 1 #this has to be a number not a string
+                # Check if the entered index is valid
+                if 0 <= task_index < len(tasks):
+                    # Prompt the user to enter a new task
+                    new_task = input("Enter new task: ")
+                    # Update the task at the specified index
+                    tasks[task_index] = new_task
+                    print("Task edited successfully.")
+                else:
+                    print("Invalid index.")
+            except ValueError: #this is where we close off the the try: and if the user does something wrong we prompt them (its like an else statement when all else fails)
+                print("Please enter a valid number.")
+        else:
+            print("No tasks available to edit.") #we close our initial if block if the check of there being no tasks to edit passes
+
+    # Option 3: Delete Task
+    elif choice == '3':
+        # Check if there are tasks available to delete
+        if tasks: #so basically when the option is not apending to a list and MODIFYING we will need to iterate it through the object
+            # Display the current tasks with their indices
+            for index, task in enumerate(tasks):
+                print(f"{index + 1}. {task}")
+            # Prompt the user to enter the index of the task to delete
+            try:
+                task_index = int(input("Enter task index to delete: ")) - 1
+                # Check if the entered index is valid
+                if 0 <= task_index < len(tasks):
+                    # Remove the task at the specified index
+                    tasks.pop(task_index) #we use pop to remove the index value 
+                    print("Task deleted successfully.")
+                else:
+                    print("Invalid index.")
+            except ValueError:
+                print("Please enter a valid number.")
+        else:
+            print("No tasks available to delete.")
+
+    # Option 4: Exit
+    elif choice == '4':
+        # Exit the application
+        print("Exiting the application. Goodbye!")
+        break #break ends it 
+
+    # Handle invalid menu choices
+    else:
+        print("Invalid choice. Please select a valid option.") #this gives the while loop a final out 
+
+#Create a simple chatbot that responds to user input with predefined answers
+
+test_bot = [
+    "I'm doing well thank you!",
+    "I am not sure how to respond to this",
+    "I'm not good at math or anything really",
+    "Can you make your question make sense",
+    "My name is aster poo",
+]
+
+def random_bot():
+    print(random.choice(test_bot))
+
+while True:
+    input("say something to our chat bot friend: ")
+    random_bot()
+
+
+#4 : Build a basic to-do list application where users can add, edit, and delete tasks.
+
+
