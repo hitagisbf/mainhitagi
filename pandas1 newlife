@@ -104,7 +104,7 @@ sheet_spread.iloc[0:2, 1:3] #first and second row, second and third column
 print(sheet_spread.columns)
 
 sheet_spread.loc[0, 'work_year'] #first row of the work year column
-sheet_spread.loc[1:3, 'work_year','employment_type', 'job_title'] #first to third row of the respective columns 
+sheet_spread.loc[1:3, ['work_year','employment_type', 'job_title']] #first to third row of the respective columns 
 
 #Important to note that when slicing in loc vs iloc, loc will include the start and end values, while iloc will not include the last sliced value
 
