@@ -1,0 +1,16 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+prices = np.array([100, 102, 98, 105, 110, 107, 115, 108])
+mean = np.mean(prices)
+std = np.std(prices)
+
+plt.plot(prices, label='Price')
+#plt.axhline(mean, color='gray', linestyle='--', label='Mean')
+#plt.axhline(mean + std, color='green', linestyle='--', label='+1 Std Dev')
+#plt.axhline(mean - std, color='red', linestyle='--', label='-1 Std Dev')
+plt.legend()
+plt.title("Price with Standard Deviation Bands")
+plt.show()
+
+#I will keep adding to this as it is in 'poop'
