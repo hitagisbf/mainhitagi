@@ -144,3 +144,13 @@ print(one_dim>2) #Just a T/F Condition based on the values
 print((one_dim > 4) | (one_dim == 1)) #Logical operators in numpy are not "AND" or "OR" instead they are represnted by | and &
 #THis basically says print T/F when one_dim is greater than 4 or equal to 1 
 print(-one_dim)
+
+#Basic use of Groupby
+
+df = pd.DataFrame({
+    'team': ['A', 'A', 'B', 'B', 'C'],
+    'score': [10, 15, 10, 20, 30]
+})
+
+grouped = df.groupby('team')
+print(grouped['score'].mean()) #average by team
