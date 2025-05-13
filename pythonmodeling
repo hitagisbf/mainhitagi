@@ -19,14 +19,25 @@ airline = pd.read_csv('Airlinedataset.csv')
 Delay_time = airline.iloc[:, -1] #for some reason a loc for FLight Delay Time wasn't working even after I verified it was there
 meantime = np.mean(Delay_time)
 standevtime = np.std(Delay_time)
-plt.plot(airline.index, Delay_time, label='Delay time',linewidth=10) #matplotlib basig graphing
-#plt.axhline(meantime,color='blue',linestyle='--',label='Mean_Time')
-#plt.axhline(meantime+standevtime,color='Red',linestyle='--',label='+1StdDev')
-#plt.axhline(meantime-standevtime,color='gray',linestyle='--',label='-1StdDev')
-plt.legend()
+plt.plot(airline.index, Delay_time, label='Delay time',linewidth=1) #matplotlib basig graphing
+plt.axhline(meantime,color='blue',linestyle='--',label='Mean_Time')
+plt.axhline(meantime+standevtime,color='Red',linestyle='--',label='+1StdDev')
+plt.axhline(meantime-standevtime,color='gray',linestyle='--',label='-1StdDev')
+plt.legend(bbox_to_anchor=(.1,.1))
 plt.title('Flight Delay time')
-plt.show() #need the parens
+#plt.show() #need the parens
+
+bad_airports = airline[airline.iloc[:,-1] > 75]
+good_airports = airline[airline.iloc[:,-1] < 75]
+if not bad_airports.empty: #why an ifnot instead of an if? If not is checking if the data frame is not empty so it needs to contain rows (bc a dataframe does not havea  clear truth values)
+    print("This list is poor")
+    print(bad_airports[['Airport Name', 'Airport Country Code']])
+else:
+    print("This list is ok")
+    print(good_airports[['Aiport Name','Airport Country Code']])
 
 Flight_hours = Delay_time // 60 #time conversion that may soon be necessary
 Remaining_Flight_time = Flight_hours % 60 #time conversion
 #print(Flight_hours, Remaining_Flight_time)
+
+#The first part was analyze worst airlines and airports for delays  
