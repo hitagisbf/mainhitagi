@@ -53,3 +53,29 @@ print(ein) #on looks np.empty and np.zeros appear to do the same thing
 #good for efficiency and avoid resizing, avoids unintended values with things like empty and zeros
 #good for code clarity as well b/c we define our stuff even if we don't know what to do with it 
 
+#How to add and combine series
+
+s1 = pd.Series([1, 2, 3], index=['a', 'b', 'c'])
+s2 = pd.Series([10, 20], index=['d', 'e'])
+
+combined = pd.concat([s1, s2])
+print(combined) #via concatenating
+
+#via adding
+
+stest1 = pd.Series([1, 2, 3], index=['a', 'b', 'c'])
+stest2 = pd.Series([10, 20], index=['a', 'b'])
+
+combined = stest1.add(stest2, fill_value=0)
+print(combined)
+
+#combnine by position
+
+s1 = pd.Series([1, 2, 3])
+s2 = pd.Series([10, 20])
+
+combined = pd.Series(list(s1) + list(s2))
+print(combined) 
+
+#main ways to combine series -- which work the same way for dataframes just need to be more wary of rows and columns
+
